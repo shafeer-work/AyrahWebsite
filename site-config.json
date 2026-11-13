@@ -1,13 +1,13 @@
 {
   "brandName": "Loopsy Land",
   "tagline": "A colourful little universe of cuddly crochet friends, happy accessories and handmade magic. Every loop has a story!",
-  "whatsappNumber": "919895268827",
-  "developerEmail": "shafeerev.solutions@gmail.com",
+  "whatsappNumber": "0000000000",
+  "developerEmail": "webstudio@example.com",
   "socialLinks": {
-    "youtube": "",
-    "instagram": "",
-    "x": "",
-    "facebook": "",
-    "snapchat": ""
+    "youtube": "https://www.youtube.com/@yourbrand_demo",
+    "instagram": "https://www.instagram.com/yourbrand_demo/",
+    "x": "https://x.com/yourbrand_demo",
+    "facebook": "https://www.facebook.com/yourbrand_demo/",
+    "snapchat": "https://www.snapchat.com/add/yourbrand_demo"
   }
 }
