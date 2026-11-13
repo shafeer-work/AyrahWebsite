@@ -1,203 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Loopsy Land</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#8a5cf6">
+<meta name="description" content="Loopsy Land — a colourful world of handmade crochet toys, accessories and decor.">
+<title>Loopsy Land | Handmade Crochet Magic</title>
 <style>
-:root{
-  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#fff6e3;--ink:#3b2a4f;--soft:#6b5a80;--card:#ffffff;--chip:#ffe0f0;--shadow:rgba(80,40,120,.18);
-}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#20152e;--ink:#fff1de;--soft:#c9b8e0;--card:#33244a;--chip:#4a2f63;--shadow:rgba(0,0,0,.5)}}
-:root[data-theme="dark"]{--bg:#20152e;--ink:#fff1de;--soft:#c9b8e0;--card:#33244a;--chip:#4a2f63;--shadow:rgba(0,0,0,.5)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Baloo 2","Comic Sans MS","Trebuchet MS",system-ui,sans-serif;overflow-x:hidden;min-height:100vh}
-#yarn{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.ball{position:absolute;border-radius:50%;opacity:.55;background:
-  repeating-linear-gradient(35deg,rgba(255,255,255,.45) 0 4px,transparent 4px 9px),
-  radial-gradient(circle at 30% 30%,rgba(255,255,255,.7),var(--c) 60%);
-  animation:float var(--d) ease-in-out infinite alternate;transition:transform .4s ease-out}
-@keyframes float{from{margin-top:0;rotate:0deg}to{margin-top:-60px;rotate:200deg}}
-#abs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.blob{position:absolute;width:var(--s);height:var(--s);left:var(--x);top:var(--y);background:linear-gradient(135deg,var(--a),var(--b));filter:blur(45px);opacity:.42;animation:morph var(--d) ease-in-out infinite,drift calc(var(--d)*1.6) ease-in-out infinite alternate}
-@keyframes morph{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}}
-@keyframes drift{to{transform:translate(90px,-70px) scale(1.25) rotate(90deg)}}
-.ring{position:absolute;border-radius:50%;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border:6px dashed var(--a);opacity:.35;animation:spin var(--d) linear infinite}
-.cone{border:0;opacity:.4;background:conic-gradient(#ff8fc4,#ffd93b,#6fd16b,#5cc3f5,#b28dff,#ff8fc4);-webkit-mask:radial-gradient(circle,transparent 58%,#000 60%);mask:radial-gradient(circle,transparent 58%,#000 60%)}
-@keyframes spin{to{transform:rotate(360deg)}}
-.shape{position:absolute;left:var(--x);top:var(--y);opacity:.5;animation:tumble var(--d) ease-in-out infinite alternate}
-@keyframes tumble{from{transform:translateY(0) rotate(0)}to{transform:translateY(-100px) rotate(260deg)}}
-.sq{width:var(--s);height:var(--s);border-radius:20%;background:var(--a)}
-.tri{width:0;height:0;border-left:calc(var(--s)/2) solid transparent;border-right:calc(var(--s)/2) solid transparent;border-bottom:var(--s) solid var(--a)}
-.sw{position:absolute;left:var(--x);top:var(--y);color:var(--a);animation:sway var(--d) ease-in-out infinite alternate}
-.sw svg{width:280px;height:40px;stroke:currentColor;fill:none;stroke-width:5;stroke-linecap:round;stroke-dasharray:14 12;opacity:.5;animation:dash 3s linear infinite}
-@keyframes dash{to{stroke-dashoffset:-260}}
-@keyframes sway{from{transform:translateX(-40px) rotate(-8deg)}to{transform:translateX(60px) rotate(10deg)}}
-main,header,footer{position:relative;z-index:1}
-header{text-align:center;padding:48px 20px 12px}
-h1{font-size:clamp(2.2rem,8vw,4.5rem);margin:0;line-height:1.05}
-h1 span{display:inline-block;animation:bob 2.4s ease-in-out infinite;animation-delay:calc(var(--i)*.12s)}
-h1 span:hover{transform:scale(1.4) rotate(-12deg);transition:transform .2s}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.sub{color:var(--soft);font-size:1.15rem;margin:10px auto 0;max-width:34rem}
-.thread{display:block;margin:10px auto 0;width:min(420px,80%);height:30px}
-.thread path{stroke:#ff5fa2;stroke-width:5;fill:none;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.5s .3s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:18px 16px}
-.chip{border:0;background:var(--chip);color:var(--ink);font:inherit;font-weight:700;padding:10px 20px;border-radius:999px;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
-.chip:hover{transform:translateY(-4px) rotate(-3deg);box-shadow:0 8px 16px var(--shadow)}
-.chip.on{background:#ff5fa2;color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:26px;max-width:1100px;margin:0 auto;padding:12px 20px 110px}
-.card{perspective:900px;height:260px;opacity:0;transform:translateY(30px) scale(.9);transition:opacity .6s,transform .6s}
-.card.in{opacity:1;transform:none}
-.card.hide{display:none}
-.tilt{width:100%;height:100%;transform-style:preserve-3d;transition:transform .15s ease-out;cursor:pointer}
-.inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.4,.5,1)}
-.card:hover .inner{transform:rotateY(180deg) scale(1.05)}
-.face{position:absolute;inset:0;border-radius:26px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;box-shadow:0 14px 28px var(--shadow)}
-.front{background:linear-gradient(145deg,var(--c),var(--c2));color:#3b2a4f}
-.front .em{font-size:5.2rem;filter:drop-shadow(0 6px 4px rgba(0,0,0,.18));animation:bob 3s ease-in-out infinite}
-.front b{font-size:1.25rem;margin-top:6px}
-.tag{position:absolute;top:12px;left:14px;background:rgba(255,255,255,.75);border-radius:999px;padding:2px 12px;font-size:.8rem;font-weight:700}
-.back{background:var(--card);transform:rotateY(180deg);border:4px dashed var(--c2)}
-.back p{margin:6px 0 12px;color:var(--soft)}
-.btn{display:inline-block;background:#25d366;color:#fff;text-decoration:none;border:0;font:inherit;font-weight:700;padding:10px 20px;border-radius:999px;cursor:pointer;transition:transform .2s}
-.btn:hover{transform:scale(1.08) rotate(-2deg)}
-.btn.alt{background:#ff5fa2}
-.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:5;animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}100%{box-shadow:0 0 0 22px rgba(37,211,102,0)}}
-footer{text-align:center;color:var(--soft);padding:0 20px 90px}
-#modal{position:fixed;inset:0;z-index:10;background:rgba(30,10,50,.6);display:none;align-items:center;justify-content:center;padding:20px}
-#modal.open{display:flex}
-.sheet{background:var(--card);border-radius:32px;max-width:420px;width:100%;padding:30px;text-align:center;animation:pop .5s cubic-bezier(.3,1.6,.5,1);position:relative}
-@keyframes pop{from{transform:scale(.3) rotate(-10deg);opacity:0}}
-.big{width:200px;height:200px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7rem;animation:bob 2s ease-in-out infinite}
-.sheet h2{margin:0}.sheet p{color:var(--soft)}
-.x{position:absolute;top:12px;right:16px;border:0;background:none;font-size:1.8rem;color:var(--ink);cursor:pointer;transition:transform .3s}
-.x:hover{transform:rotate(180deg)}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.card{opacity:1;transform:none}}
+:root{--ink:#39205c;--plum:#57256e;--pink:#ff4f9a;--orange:#ff9852;--yellow:#ffd84d;--blue:#42c8ee;--mint:#65d9b2;--violet:#8d65f5;--paper:#fffaff;--shadow:0 18px 48px rgba(65,25,100,.17)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:#fff6fc;color:var(--ink);font-family:"Trebuchet MS","Avenir Next",system-ui,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+.announcement{background:linear-gradient(90deg,#ff4d9a,#9757eb,#35bfe8);color:#fff;text-align:center;padding:9px 12px;font-size:12px;font-weight:900;letter-spacing:.08em}
+header{position:sticky;top:0;z-index:30;background:rgba(255,249,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid #f3dcef}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:9px;font-size:24px;font-weight:1000;letter-spacing:-1px;color:#61266e}.logo{width:42px;height:42px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,#ffe45c,#ff8fba);box-shadow:0 5px 0 #e8a3bc;transform:rotate(-7deg);font-size:25px}.brand b{color:#ff398f}.navlinks{display:flex;gap:26px;font-size:14px;font-weight:900;color:#674675}.navlinks a:hover{color:var(--pink)}.nav-cta,.btn{border:0;border-radius:999px;padding:13px 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:950;cursor:pointer;transition:.22s}.nav-cta,.primary{background:linear-gradient(100deg,#ff398f,#ff815e);color:#fff;box-shadow:0 7px 0 #dc367e,0 12px 22px #ee43842c}.nav-cta:hover,.btn:hover{transform:translateY(-4px);filter:saturate(1.13)}.menu{display:none;border:0;border-radius:13px;background:#ffe1f0;color:#73327b;padding:9px 12px;font-size:20px}
+.hero{position:relative;min-height:650px;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,#4d9ff5 0%,#9875f4 46%,#f78bd0 100%)}.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 100%,#ffe6c8 0 12%,transparent 46%),radial-gradient(circle at 14% 18%,#c0eaff 0 5%,transparent 23%),radial-gradient(circle at 82% 17%,#ffd8ed 0 6%,transparent 24%);opacity:.9}.hero:after{content:"";position:absolute;z-index:-1;left:-5%;right:-5%;height:190px;bottom:-100px;border-radius:50%;background:#fff6fc;box-shadow:0 -12px 40px #fff9}
+.hero-inner{min-height:650px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;padding:54px 0 95px}.hero-copy{padding:32px 34px;border-radius:34px;background:rgba(255,250,255,.87);border:2px solid #fff;box-shadow:0 25px 65px #33145b30;backdrop-filter:blur(8px);text-align:center;z-index:4}.eyebrow{display:inline-block;padding:8px 13px;border-radius:99px;background:#fff0a2;color:#875018;font-size:11px;font-weight:1000;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-3px;margin:18px 0;color:#542067;text-shadow:0 3px #fff}h1 span{background:linear-gradient(90deg,#ff318b,#ff9048,#8a5be9,#21aede);background-clip:text;-webkit-background-clip:text;color:transparent}.hero-copy p{font-size:17px;line-height:1.6;color:#73577d;font-weight:650;margin:0 auto 22px;max-width:450px}.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.light{background:#fff;color:#652a76;box-shadow:0 6px 0 #e7cfee}.hero-note{font-size:12px!important;margin:16px 0 0!important;color:#93629a!important}
+.scene{position:relative;height:500px;perspective:900px;transform-style:preserve-3d}.island{position:absolute;left:8%;right:6%;bottom:44px;height:170px;border-radius:50% 50% 38% 38%;background:linear-gradient(160deg,#9de9a8,#3bb986 64%,#278c7f);box-shadow:0 26px 0 #7752a8,0 42px 55px #28104c55;transform:rotateX(8deg)}.island:before{content:"";position:absolute;left:10%;right:10%;top:16px;height:40px;border-radius:50%;background:#c9ffb1;opacity:.8}.cottage{position:absolute;right:11%;bottom:175px;font-size:100px;filter:drop-shadow(0 14px 10px #3b235c45);animation:bob 5s ease-in-out infinite;z-index:2}.bunny{position:absolute;left:17%;bottom:114px;font-size:126px;filter:drop-shadow(0 15px 9px #36194a38);animation:bob 4.3s ease-in-out infinite;z-index:3}.teddy{position:absolute;left:50%;bottom:109px;font-size:98px;filter:drop-shadow(0 14px 9px #36194a38);animation:bob 5s -2s ease-in-out infinite;z-index:3}.rainbow{position:absolute;right:3%;top:14px;width:220px;height:180px;border-radius:130px 130px 0 0;border:15px solid #ff4d9b;border-bottom:0;transform:rotate(18deg);filter:drop-shadow(0 6px 5px #4c226e35)}.rainbow:before,.rainbow:after{content:"";position:absolute;border-radius:inherit;border-bottom:0}.rainbow:before{inset:14px;border:13px solid #ffd54e;border-bottom:0}.rainbow:after{inset:40px;border:13px solid #53d5c7;border-bottom:0}.cloud{position:absolute;width:140px;height:45px;border-radius:50px;background:#fff;box-shadow:0 10px 22px #38205b1b;opacity:.95;animation:cloud 13s ease-in-out infinite alternate}.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}.cloud:before{width:65px;height:65px;left:24px;top:-28px}.cloud:after{width:52px;height:52px;right:20px;top:-19px}.cloud.a{left:2%;top:16%}.cloud.b{right:1%;top:48%;transform:scale(.7);animation-delay:-5s}.yarnball{position:absolute;width:78px;height:78px;border-radius:50%;background:repeating-linear-gradient(35deg,#fff8 0 4px,transparent 4px 10px),radial-gradient(circle at 30% 25%,#fff,#ff55a3 66%);box-shadow:0 12px 16px #351a5633;animation:bob 6s ease-in-out infinite}.yarnball.y1{left:2%;top:42%}.yarnball.y2{right:4%;bottom:22%;width:58px;height:58px;background:repeating-linear-gradient(35deg,#fff8 0 4px,transparent 4px 10px),radial-gradient(circle at 30% 25%,#fff,#ffbd43 66%);animation-delay:-2s}.flower{position:absolute;font-size:36px;animation:twinkle 3s ease-in-out infinite}.flower.f1{left:12%;top:8%}.flower.f2{right:20%;bottom:5%;animation-delay:-1s}.star{position:absolute;color:#fff36e;font-size:35px;animation:twinkle 2.8s ease-in-out infinite}.star.s1{left:36%;top:12%}.star.s2{right:1%;top:28%;animation-delay:-1.4s}
+@keyframes bob{0%,100%{translate:0 0;rotate:-3deg}50%{translate:0 -17px;rotate:3deg}}@keyframes twinkle{0%,100%{transform:scale(.75) rotate(-12deg);opacity:.65}50%{transform:scale(1.2) rotate(16deg);opacity:1}}@keyframes cloud{to{translate:40px -12px}}
+.marquee{overflow:hidden;background:#fff;border-block:1px solid #f0d7ed;padding:13px 0;color:#783b82;font-size:13px;font-weight:950}.marquee-track{display:flex;gap:32px;width:max-content;animation:marquee 28s linear infinite}.marquee span{white-space:nowrap}@keyframes marquee{to{transform:translateX(-50%)}}
+section{padding:76px 0}.section-head{text-align:center;max-width:660px;margin:0 auto 32px}.kicker{color:#e43b8a;font-size:12px;font-weight:1000;letter-spacing:.14em;text-transform:uppercase}h2{font-size:clamp(34px,4vw,50px);line-height:1.05;letter-spacing:-1.5px;margin:10px 0;color:#51205f}.section-head p{color:#806989;font-weight:600;margin:0}.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px}.filter{border:2px solid #f1d7ef;background:#fff;border-radius:99px;padding:10px 17px;color:#70447c;font-size:13px;font-weight:950;cursor:pointer;box-shadow:0 4px 0 #ead7ee;transition:.2s}.filter:hover,.filter.active{background:#7040cf;color:white;border-color:#7040cf;transform:translateY(-3px);box-shadow:0 7px 0 #50259e}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;perspective:1200px}.product{background:#fff;border:2px solid #fff;border-radius:25px;overflow:hidden;box-shadow:0 12px 30px #58276c20;transform-style:preserve-3d;transition:box-shadow .25s,border-color .25s;will-change:transform}.product:hover{box-shadow:0 25px 48px #58276c33;border-color:#ffadd3}.product[hidden]{display:none}.product-art{height:210px;display:grid;place-items:center;position:relative;overflow:hidden}.product-art:before{content:"";position:absolute;width:165px;height:165px;border-radius:50%;background:#ffffff80;transition:transform .4s}.product:hover .product-art:before{transform:scale(1.25)}.product-emoji{font-size:100px;position:relative;z-index:1;filter:drop-shadow(0 10px 7px #4c285b30);transform:translateZ(35px);transition:transform .35s}.product:hover .product-emoji{transform:translateZ(48px) scale(1.12) rotate(-7deg)}.p-pink{background:linear-gradient(140deg,#ffafd0,#ffe5f0)}.p-blue{background:linear-gradient(140deg,#9be6fa,#def7ff)}.p-yellow{background:linear-gradient(140deg,#ffdf79,#fff3ca)}.p-mint{background:linear-gradient(140deg,#89e2bf,#dcfff0)}.p-purple{background:linear-gradient(140deg,#c1a4ff,#f0e6ff)}.p-orange{background:linear-gradient(140deg,#ffb38a,#ffe1ca)}.tag{position:absolute;top:13px;left:13px;background:#fff;color:#743980;border-radius:99px;padding:6px 10px;font-size:10px;font-weight:1000;text-transform:uppercase}.fav{position:absolute;top:11px;right:13px;border:0;border-radius:50%;width:34px;height:34px;background:#fff;color:#f34b96;font-size:19px;cursor:pointer;z-index:2}.fav.liked{background:#ff438f;color:#fff;animation:heart .35s}@keyframes heart{50%{transform:scale(1.3)}}.product-info{padding:17px 18px 19px}.product-info h3{margin:0 0 5px;color:#542363;font-size:19px}.product-info p{margin:0 0 15px;color:#806989;font-size:13px;min-height:39px;line-height:1.5}.product-foot{display:flex;justify-content:space-between;align-items:center;gap:8px}.product-type{font-size:11px;font-weight:900;color:#9978a0}.ask{border:0;border-radius:99px;background:#ffedf5;color:#c22e7c;padding:9px 13px;font-size:12px;font-weight:1000;cursor:pointer}.ask:hover{background:#ff3d91;color:#fff;transform:translateY(-2px)}
+.about{background:linear-gradient(130deg,#fff1a9,#ffd4e7 50%,#d9d0ff)}.about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px}.about-art{min-height:320px;border-radius:34px;background:linear-gradient(145deg,#83dddb,#c7a5ff);display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}.about-art:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:#ffffff55}.about-mascot{font-size:155px;position:relative;filter:drop-shadow(0 16px 12px #57317840);animation:bob 5s ease-in-out infinite}.sticker{position:absolute;bottom:22px;right:20px;background:#fff;padding:10px 15px;border-radius:99px;font-size:12px;font-weight:1000;transform:rotate(-5deg)}.about-copy p{color:#74547e;line-height:1.75;font-weight:600}.values{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:22px}.value{background:#ffffffb8;border:1px solid #fff;border-radius:15px;padding:13px;font-size:13px;font-weight:900}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.step{background:#fff;border:2px solid #f3def0;border-radius:24px;padding:25px;text-align:center;box-shadow:0 8px 0 #eeddf0;transition:.25s}.step:hover{transform:translateY(-7px) rotate(-1deg)}.step-icon{width:60px;height:60px;margin:0 auto 13px;border-radius:20px;background:#ffe1ee;display:grid;place-items:center;font-size:29px}.step:nth-child(2) .step-icon{background:#e6ddff}.step:nth-child(3) .step-icon{background:#d7f7e9}.step h3{margin:0 0 7px;color:#582466}.step p{margin:0;color:#806b87;font-size:13px}
+.cta-box{border-radius:34px;padding:50px 24px;text-align:center;color:#fff;background:radial-gradient(circle at 12% 20%,#ffb34d,transparent 26%),radial-gradient(circle at 85% 75%,#39c9dd,transparent 30%),linear-gradient(110deg,#ff3d91,#8b50df);box-shadow:0 22px 50px #7e32a533}.cta-box h2{color:#fff;margin:0 0 12px}.cta-box p{max-width:540px;margin:0 auto 22px;color:#fff2ff}.cta-box .btn{background:#fff;color:#7b2c94;box-shadow:0 6px 0 #d9a9e9}footer{padding:28px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.footnote{font-size:12px;color:#8b7291}.footerlinks{display:flex;gap:18px;font-size:13px;font-weight:900;color:#70447c}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.reveal.in{opacity:1;transform:translateY(0)}.toast{position:fixed;z-index:50;left:50%;bottom:20px;transform:translate(-50%,20px);opacity:0;background:#4d1e61;color:#fff;border-radius:99px;padding:12px 18px;font-size:13px;font-weight:800;transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){.navlinks{display:none;position:absolute;top:74px;left:0;right:0;padding:20px 24px;background:#fff8ff;flex-direction:column;align-items:flex-start;border-bottom:1px solid #f0d9ed}.navlinks.open{display:flex}.menu{display:block}.nav-cta{display:none}.hero-inner{grid-template-columns:1fr;padding:40px 0 95px}.hero-copy{max-width:600px;margin:auto}.scene{height:350px;max-width:600px;width:100%;margin:auto}.cottage{font-size:78px;bottom:140px}.bunny{font-size:98px;bottom:96px}.teddy{font-size:80px;bottom:94px}.island{height:130px;bottom:33px}.rainbow{width:155px;height:120px;border-width:11px}.rainbow:before{inset:10px;border-width:10px}.rainbow:after{inset:29px;border-width:10px}.products{grid-template-columns:repeat(2,1fr)}.about-grid{grid-template-columns:1fr;gap:30px}.about-art{min-height:270px}}
+@media(max-width:560px){.wrap{width:calc(100% - 28px)}.brand{font-size:21px}.hero-copy{padding:25px 18px;border-radius:25px}h1{font-size:49px;letter-spacing:-2px}.hero-copy p{font-size:15px}.scene{height:300px}.products{grid-template-columns:1fr;gap:17px}.product-art{height:220px}.steps{grid-template-columns:1fr}.values{grid-template-columns:1fr 1fr}.footer-row{justify-content:center;text-align:center}.footerlinks{justify-content:center}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div id="abs" aria-hidden="true"></div>
-<div id="yarn" aria-hidden="true"></div>
-<header>
-  <h1 id="title" aria-label="Loopsy Land"></h1>
-  <svg class="thread" viewBox="0 0 420 30" aria-hidden="true"><path d="M5 15 Q35 -5 65 15 T125 15 T185 15 T245 15 T305 15 T365 15 T415 15"/></svg>
-  <p class="sub"><b>Handmade crochet toys, accessories &amp; decor</b> · Every loop is a little bit of magic. 🧶</p>
-</header>
+<div class="announcement">🌈 WELCOME TO OUR LITTLE WORLD OF HANDMADE MAGIC · MADE WITH LOVE IN EVERY LOOP 🌈</div>
+<header><div class="wrap nav">
+<a class="brand" href="#home"><span class="logo">🧶</span><span>loopsy <b>land</b></span></a>
+<nav class="navlinks" id="navlinks"><a href="#home">Home</a><a href="#shop">The goodies</a><a href="#about">Our story</a><a href="#how">How to order</a><a href="#contact">Contact</a></nav>
+<a class="nav-cta whatsapp-link" href="#">Let's chat 💬</a><button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+</div></header>
 <main>
-  <div class="chips" id="chips"></div>
-  <div class="grid" id="grid"></div>
+<section class="hero" id="home">
+<div class="wrap hero-inner">
+<div class="hero-copy reveal"><span class="eyebrow">✨ Handmade happy things ✨</span><h1>Welcome to<br><span>Loopsy Land!</span></h1><p>A colourful little universe of cuddly crochet friends, happy accessories and handmade magic. Every loop has a story!</p><div class="hero-actions"><a class="btn primary" href="#shop">Explore the goodies ➜</a><a class="btn light whatsapp-link" href="#">Chat on WhatsApp ☺</a></div><p class="hero-note">♡ Made slowly, stitched happily, and packed with love.</p></div>
+<div class="scene" id="scene">
+<div class="cloud a" data-depth=".12"></div><div class="cloud b" data-depth=".2"></div><div class="rainbow" data-depth=".18"></div><div class="yarnball y1" data-depth=".32"></div><div class="yarnball y2" data-depth=".24"></div>
+<span class="flower f1" data-depth=".22">🌼</span><span class="flower f2" data-depth=".16">🌸</span><span class="star s1" data-depth=".3">✦</span><span class="star s2" data-depth=".27">✧</span>
+<div class="island"></div><div class="cottage">🏡</div><div class="bunny">🐰</div><div class="teddy">🧸</div>
+</div></div></section>
+<div class="marquee"><div class="marquee-track"><span>🌼 HANDMADE WITH LOVE</span><span>🧸 LITTLE THINGS, BIG SMILES</span><span>🌈 COLOUR YOUR WORLD</span><span>🧶 EVERY LOOP IS MAGIC</span><span>🎁 GIFTS WITH PERSONALITY</span><span>🌼 HANDMADE WITH LOVE</span><span>🧸 LITTLE THINGS, BIG SMILES</span><span>🌈 COLOUR YOUR WORLD</span><span>🧶 EVERY LOOP IS MAGIC</span><span>🎁 GIFTS WITH PERSONALITY</span></div></div>
+<section id="shop"><div class="wrap">
+<div class="section-head reveal"><div class="kicker">✿ The little shop ✿</div><h2>Pick your new bestie!</h2><p>Meet the handmade cuties waiting to brighten your day.</p></div>
+<div class="filters reveal" role="group" aria-label="Filter products"><button class="filter active" data-filter="all">All the goodies ✨</button><button class="filter" data-filter="toys">Cuddly toys 🧸</button><button class="filter" data-filter="accessories">Accessories 🌼</button><button class="filter" data-filter="decor">Home & décor 🌈</button></div>
+<div class="products">
+<article class="product reveal" data-category="toys"><div class="product-art p-pink"><span class="tag">Bestie alert!</span><button class="fav" aria-label="Favourite Bunny Bestie">♡</button><span class="product-emoji">🐰</span></div><div class="product-info"><h3>Bunny Bestie</h3><p>A soft little friend for big hugs and tiny adventures.</p><div class="product-foot"><span class="product-type">CUDDLY TOY</span><button class="ask" data-product="Bunny Bestie">Ask about it ↗</button></div></div></article>
+<article class="product reveal" data-category="toys"><div class="product-art p-blue"><span class="tag">Cool & cuddly</span><button class="fav" aria-label="Favourite Penguin Pal">♡</button><span class="product-emoji">🐧</span></div><div class="product-info"><h3>Penguin Pal</h3><p>A little penguin with a big personality and warm scarf.</p><div class="product-foot"><span class="product-type">CUDDLY TOY</span><button class="ask" data-product="Penguin Pal">Ask about it ↗</button></div></div></article>
+<article class="product reveal" data-category="accessories"><div class="product-art p-yellow"><span class="tag">Sunshine pick</span><button class="fav" aria-label="Favourite Sunflower Bag">♡</button><span class="product-emoji">🌻</span></div><div class="product-info"><h3>Sunflower Bag</h3><p>A bright little carry-all that brings the sunshine along.</p><div class="product-foot"><span class="product-type">ACCESSORY</span><button class="ask" data-product="Sunflower Bag">Ask about it ↗</button></div></div></article>
+<article class="product reveal" data-category="decor"><div class="product-art p-mint"><span class="tag">Plant buddy</span><button class="fav" aria-label="Favourite Cactus Cutie">♡</button><span class="product-emoji">🌵</span></div><div class="product-info"><h3>Cactus Cutie</h3><p>A cheerful no-fuss plant pal for your favourite corner.</p><div class="product-foot"><span class="product-type">HOME & DÉCOR</span><button class="ask" data-product="Cactus Cutie">Ask about it ↗</button></div></div></article>
+<article class="product reveal" data-category="toys"><div class="product-art p-purple"><span class="tag">Pocket magic</span><button class="fav" aria-label="Favourite Little Dream Doll">♡</button><span class="product-emoji">🧚</span></div><div class="product-info"><h3>Little Dream Doll</h3><p>A magical mini companion dressed for make-believe.</p><div class="product-foot"><span class="product-type">CUDDLY TOY</span><button class="ask" data-product="Little Dream Doll">Ask about it ↗</button></div></div></article>
+<article class="product reveal" data-category="decor"><div class="product-art p-orange"><span class="tag">Happy décor</span><button class="fav" aria-label="Favourite Starry Pillow">♡</button><span class="product-emoji">⭐</span></div><div class="product-info"><h3>Starry Pillow</h3><p>A squishy pop of colour for cosy rooms and happy naps.</p><div class="product-foot"><span class="product-type">HOME & DÉCOR</span><button class="ask" data-product="Starry Pillow">Ask about it ↗</button></div></div></article>
+</div></div></section>
+<section class="about" id="about"><div class="wrap about-grid"><div class="about-art reveal"><span class="about-mascot">🧸</span><span class="sticker">Stitched with a smile ♡</span></div><div class="about-copy reveal"><div class="kicker">A little hello from us</div><h2>Made by hand.<br>Made to make you smile.</h2><p>Loopsy Land is a happy little corner filled with handmade crochet creations. Every stitch is made with patience, imagination and lots of love. No two handmade pieces are exactly alike — and that's their special magic.</p><div class="values"><div class="value">💗 Thoughtfully handmade</div><div class="value">🧵 Every stitch matters</div><div class="value">🎨 Colourful & unique</div><div class="value">🎁 Lovely little gifts</div></div></div></div></section>
+<section id="how"><div class="wrap"><div class="section-head reveal"><div class="kicker">Easy peasy</div><h2>How to bring one home</h2><p>Your new handmade friend is just three little steps away.</p></div><div class="steps"><div class="step reveal"><div class="step-icon">👀</div><h3>1. Find your favourite</h3><p>Explore the collection and pick the little treasure you love.</p></div><div class="step reveal"><div class="step-icon">💬</div><h3>2. Say hello</h3><p>Message us on WhatsApp to check colours, price and availability.</p></div><div class="step reveal"><div class="step-icon">🎁</div><h3>3. Make it yours</h3><p>We'll confirm your order and help arrange delivery.</p></div></div></div></section>
+<section id="contact"><div class="wrap"><div class="cta-box reveal"><h2>Ready for a little magic?</h2><p>Have a question, a custom idea or just want to say hello? We'd love to hear from you!</p><a class="btn whatsapp-link" href="#">Let's make something lovely 💖</a></div></div></section>
 </main>
-<footer>Every piece is one of a kind. Hover (or tap) a card to peek inside!</footer>
-<a class="btn wa" id="waFloat" target="_blank" rel="noopener">💬 Order on WhatsApp</a>
-
-<div id="modal" role="dialog" aria-modal="true" aria-label="Item details">
-  <div class="sheet">
-    <button class="x" id="close" aria-label="Close">×</button>
-    <div class="big" id="mBig"></div>
-    <h2 id="mName"></h2>
-    <p id="mDesc"></p>
-    <a class="btn" id="mWa" target="_blank" rel="noopener">💬 Ask about this</a>
-  </div>
-</div>
-
+<footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="logo">🧶</span><span>loopsy <b>land</b></span></a><div class="footnote">Made with ♡, one loop at a time. © <span id="year"></span> Loopsy Land</div><div class="footerlinks"><a href="#shop">Shop</a><a href="#about">Our story</a><a class="whatsapp-link" href="#">WhatsApp ↗</a></div></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-// ✏️ EDIT THESE: your WhatsApp number (country code, digits only) and items.
-// To use a real photo, add  img:"data-or-url"  to an item (shown instead of the emoji).
-var WA_NUMBER = "919895268827";
-var ITEMS = [
-  {n:"Bunny Buddy",cat:"Toys",e:"🐰",c:"#ffd1e8",c2:"#ff8fc4",d:"A soft amigurumi bunny, perfect for cuddles."},
-  {n:"Octo Pal",cat:"Toys",e:"🐙",c:"#ffe7a8",c2:"#ffb347",d:"A friendly octopus with eight wiggly arms."},
-  {n:"Teddy Bear",cat:"Toys",e:"🧸",c:"#ffd9b8",c2:"#e8a06a",d:"A classic little bear with a big heart."},
-  {n:"Dino Roar",cat:"Toys",e:"🦖",c:"#c9f2c7",c2:"#6fd16b",d:"A green dino that is not scary at all!"},
-  {n:"Rainbow Scrunchie",cat:"Accessories",e:"🎀",c:"#e5d4ff",c2:"#b28dff",d:"Colorful hair scrunchies in every shade."},
-  {n:"Cozy Beanie",cat:"Accessories",e:"🧢",c:"#bfe9ff",c2:"#5cc3f5",d:"A warm, stretchy beanie for chilly days."},
-  {n:"Mini Bag",cat:"Accessories",e:"👜",c:"#ffd1d1",c2:"#ff7f7f",d:"A tiny crochet bag for treasures and snacks."},
-  {n:"Cute Keychain",cat:"Accessories",e:"🔑",c:"#fff3a6",c2:"#ffd93b",d:"Little charms to hang on bags and keys."},
-  {n:"Flower Bouquet",cat:"Decor",e:"💐",c:"#ffd1e8",c2:"#ff6fb0",d:"Flowers that never wilt, made of soft yarn."},
-  {n:"Tea Coasters",cat:"Decor",e:"☕",c:"#d7f5e4",c2:"#7ddba8",d:"Round coasters in happy colors."},
-  {n:"Rainbow Hanging",cat:"Decor",e:"🌈",c:"#c9e0ff",c2:"#7aa8ff",d:"A wall hanging to brighten any room."},
-  {n:"Cactus Pot",cat:"Decor",e:"🌵",c:"#d8f5b5",c2:"#9bd94a",d:"A prickle-free cactus in a tiny pot."}
-];
-var $ = function(s){return document.querySelector(s)};
-function waLink(t){return "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(t)}
-$("#waFloat").href = waLink("Hi! I saw your crochet collection and would like to order.");
-
-// Wiggly title
-var t = "Loopsy Land", h = "", k = 0;
-for (var i=0;i<t.length;i++){ h += t[i]===" " ? " " : '<span style="--i:'+(k++)+';color:hsl('+(k*37%360)+',80%,58%)">'+t[i]+'</span>'; }
-$("#title").innerHTML = h;
-
-// Floating yarn balls with mouse parallax
-var cols=["#ff8fc4","#ffb347","#6fd16b","#5cc3f5","#b28dff","#ffd93b"], balls=[];
-for (var b=0;b<12;b++){
-  var el=document.createElement("div"); el.className="ball";
-  var s=50+Math.random()*80;
-  el.style.cssText="width:"+s+"px;height:"+s+"px;left:"+Math.random()*95+"%;top:"+Math.random()*90+"%;--c:"+cols[b%6]+";--d:"+(5+Math.random()*6)+"s;animation-delay:-"+Math.random()*6+"s";
-  el.dataset.depth=(.2+Math.random()*.8).toFixed(2);
-  $("#yarn").appendChild(el); balls.push(el);
-}
-document.addEventListener("mousemove",function(e){
-  var x=e.clientX/innerWidth-.5, y=e.clientY/innerHeight-.5;
-  balls.forEach(function(el){var d=el.dataset.depth*60;el.style.transform="translate("+(-x*d)+"px,"+(-y*d)+"px)"});
-});
-
-// Abstract background layer: morphing blobs, rings, shapes, squiggles
-var A=$("#abs");
-function rn(a,b){return a+Math.random()*(b-a)}
-function mk(cls,css,html){var e=document.createElement("div");e.className=cls;e.style.cssText=css;if(html)e.innerHTML=html;A.appendChild(e)}
-for(var q=0;q<5;q++) mk("blob","--s:"+rn(260,420)+"px;--x:"+rn(-5,80)+"%;--y:"+rn(-5,75)+"%;--a:"+cols[q%6]+";--b:"+cols[(q+2)%6]+";--d:"+rn(7,12)+"s");
-for(var q=0;q<4;q++) mk("ring"+(q%2?" cone":""),"--s:"+rn(120,260)+"px;--x:"+rn(0,85)+"%;--y:"+rn(0,80)+"%;--a:"+cols[q%6]+";--d:"+rn(14,28)+"s");
-for(var q=0;q<10;q++) mk("shape "+(q%2?"sq":"tri"),"--s:"+rn(24,50)+"px;--x:"+rn(0,95)+"%;--y:"+rn(10,95)+"%;--a:"+cols[q%6]+";--d:"+rn(6,13)+"s;animation-delay:-"+rn(0,6)+"s");
-for(var q=0;q<4;q++) mk("sw","--x:"+rn(0,70)+"%;--y:"+rn(5,90)+"%;--a:"+cols[(q+1)%6]+";--d:"+rn(6,10)+"s",'<svg viewBox="0 0 280 40"><path d="M5 20 Q40 -5 75 20 T145 20 T215 20 T275 20"/></svg>');
-
-// Chips + grid
-var cats=["All"].concat(ITEMS.map(function(i){return i.cat}).filter(function(v,i,a){return a.indexOf(v)===i}));
-var icons={All:"✨",Toys:"🧸",Accessories:"🎀",Decor:"🌸"};
-cats.forEach(function(c,i){
-  var b=document.createElement("button"); b.className="chip"+(i?"":" on"); b.textContent=(icons[c]||"")+" "+c;
-  b.onclick=function(){
-    document.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on")}); b.classList.add("on");
-    document.querySelectorAll(".card").forEach(function(cd){
-      var show=c==="All"||cd.dataset.cat===c; cd.classList.toggle("hide",!show);
-      if(show){cd.classList.remove("in");void cd.offsetWidth;cd.classList.add("in")}
-    });
-  };
-  $("#chips").appendChild(b);
-});
-function art(it){return it.img?'<img src="'+it.img+'" alt="'+it.n+'" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">':it.e}
-ITEMS.forEach(function(it,idx){
-  var cd=document.createElement("div"); cd.className="card"; cd.dataset.cat=it.cat;
-  cd.style.setProperty("--c",it.c); cd.style.setProperty("--c2",it.c2);
-  cd.innerHTML='<div class="tilt"><div class="inner"><div class="face front"><span class="tag">'+it.cat+'</span><span class="em">'+art(it)+'</span><b>'+it.n+'</b></div><div class="face back"><b>'+it.n+'</b><p>'+it.d+'</p><span class="btn alt">View closer 👀</span></div></div></div>';
-  var tl=cd.querySelector(".tilt");
-  cd.addEventListener("mousemove",function(e){
-    var r=cd.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    tl.style.transform="rotateX("+(-y*18)+"deg) rotateY("+(x*18)+"deg)";
-  });
-  cd.addEventListener("mouseleave",function(){tl.style.transform=""});
-  cd.addEventListener("click",function(){open(it)});
-  $("#grid").appendChild(cd);
-});
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
-  var c=e.target; setTimeout(function(){c.classList.add("in")},(Array.prototype.indexOf.call(c.parentNode.children,c)%4)*90); io.unobserve(c)}})},{threshold:.1});
-document.querySelectorAll(".card").forEach(function(c){io.observe(c)});
-
-// Modal
-function open(it){
-  $("#mBig").innerHTML=art(it); $("#mBig").style.background="linear-gradient(145deg,"+it.c+","+it.c2+")";
-  $("#mName").textContent=it.n; $("#mDesc").textContent=it.d;
-  $("#mWa").href=waLink("Hi! I'm interested in the "+it.n+" from your crochet collection.");
-  $("#modal").classList.add("open");
-}
-function shut(){$("#modal").classList.remove("open")}
-$("#close").onclick=shut;
-$("#modal").addEventListener("click",function(e){if(e.target.id==="modal")shut()});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")shut()});
+const WHATSAPP_NUMBER="919895268827";
+const toast=document.getElementById("toast");let toastTimer;
+function showToast(msg){toast.textContent=msg;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),3000)}
+function waLink(msg){return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg)}
+document.querySelectorAll(".whatsapp-link").forEach(a=>a.href=waLink("Hi Loopsy Land! I'd love to know more about your handmade crochet creations."));
+function openWhatsApp(msg){if(WHATSAPP_NUMBER.includes("X")){showToast("Please add a WhatsApp number in index.html.");return}window.open(waLink(msg),"_blank","noopener")}
+document.querySelectorAll(".ask").forEach(b=>b.addEventListener("click",()=>openWhatsApp("Hi Loopsy Land! I'm interested in "+b.dataset.product+". Could you share the price and details?")));
+document.querySelectorAll(".fav").forEach(b=>b.addEventListener("click",()=>{b.classList.toggle("liked");b.textContent=b.classList.contains("liked")?"♥":"♡"}));
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".product").forEach(p=>p.hidden=b.dataset.filter!=="all"&&p.dataset.category!==b.dataset.filter)}));
+const menu=document.getElementById("menu"),nav=document.getElementById("navlinks");menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.textContent=open?"×":"☰"});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.textContent="☰"}));
+document.getElementById("year").textContent=new Date().getFullYear();
+if("IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>io.observe(el))}else{document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"))}
+const fine=matchMedia("(hover:hover) and (pointer:fine)").matches,reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(fine&&!reduce){let x=0,y=0,raf=false;window.addEventListener("pointermove",e=>{x=(e.clientX/innerWidth-.5)*2;y=(e.clientY/innerHeight-.5)*2;if(!raf){raf=true;requestAnimationFrame(()=>{document.querySelectorAll("[data-depth]").forEach(el=>{const d=Number(el.dataset.depth);el.style.translate=(x*d*38)+"px "+(y*d*30)+"px"});raf=false})}},{passive:true});
+document.querySelectorAll(".product").forEach(card=>{card.addEventListener("pointermove",e=>{if(card.hidden)return;const r=card.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;card.style.transform="perspective(950px) rotateX("+((.5-py)*8)+"deg) rotateY("+((px-.5)*9)+"deg) translateY(-5px)"});card.addEventListener("pointerleave",()=>card.style.transform="")})}
 </script>
 </body>
 </html>
