@@ -164,6 +164,34 @@ footer{padding:25px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.foot
 @media(max-width:420px){.hero-full{height:720px;min-height:680px}.hero-caption{width:calc(100% - 58px);padding:10px 10px}.hero-caption h1{font-size:30px}.hero-friends-stage{height:42%;bottom:6.5%}.hero-friend{width:24%;}.hero-friend[data-hero-friend="bobo"]{left:-2%}.hero-friend[data-hero-friend="ollie"]{left:18%}.hero-friend[data-hero-friend="coco"]{left:38%}.hero-friend[data-hero-friend="tilly"]{left:58%}.hero-friend[data-hero-friend="mimi"]{left:78%}.teaser-grid{gap:7px}.teaser-card{padding:9px 7px}.teaser-copy small{display:none}}
 @media(prefers-reduced-motion:reduce){.hero-caption,.hero-friend,.hero-slide-arrow,.hero-slide-dot,.teaser-card{transition:none!important}}
 
+
+/* Carousel startup and visibility regression fixes */
+.hero-full{isolation:isolate;position:relative;background:#93d9e8}
+.hero-grove-scene{z-index:-1!important}
+.hero-soft-vignette{z-index:0!important}
+.hero-caption{z-index:6!important}
+.hero-friends-stage{z-index:3!important}
+.hero-slide-arrow{z-index:12!important;pointer-events:auto!important}
+.hero-slide-dots{z-index:13!important;pointer-events:auto!important}
+.hero-friend{width:18.5%;height:62%;bottom:3%;transition:opacity .35s,transform .5s,filter .5s,left .45s,width .45s,height .45s}
+.hero-friend[data-hero-friend="bobo"]{left:2%}
+.hero-friend[data-hero-friend="ollie"]{left:21.5%}
+.hero-friend[data-hero-friend="coco"]{left:41%}
+.hero-friend[data-hero-friend="tilly"]{left:60.5%}
+.hero-friend[data-hero-friend="mimi"]{left:80%}
+.hero-friend.is-hidden{display:none!important}
+.hero-friend.is-featured{display:block!important;left:34%!important;bottom:0!important;width:32%!important;height:95%!important;opacity:1!important;transform:translateY(-5px) scale(1.04)!important;filter:drop-shadow(0 22px 18px rgba(65,37,83,.3)) saturate(1.08)}
+.hero-caption.changing{transition:opacity .2s,transform .25s}
+@media(max-width:700px){
+ .hero-friend{width:19%;height:42%;bottom:5%}
+ .hero-friend[data-hero-friend="bobo"]{left:1%}
+ .hero-friend[data-hero-friend="ollie"]{left:21%}
+ .hero-friend[data-hero-friend="coco"]{left:41%}
+ .hero-friend[data-hero-friend="tilly"]{left:61%}
+ .hero-friend[data-hero-friend="mimi"]{left:81%}
+ .hero-friend.is-featured{left:20%!important;width:60%!important;height:58%!important;bottom:1%!important;transform:translateY(-3px) scale(1)!important}
+}
+
 </style>
 </head>
 <body>
@@ -276,7 +304,7 @@ facebook:'<path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.5 1.6-1.5h1.7V4.1c
 snapchat:'<path d="M12 2.2c-2.8 0-4.6 2.1-4.6 5.2 0 1.4.2 2.5.3 3.3-.5.5-1.4.9-2.5 1.1-.5.1-.8.4-.8.8 0 .8 1.4 1.2 2.4 1.4.4.1.6.3.6.7-.1 1.7-1.7 3-3.3 3.4-.4.1-.6.3-.6.6 0 .6 1 .9 2.5 1.1 1 .1 1.8.4 2.3 1 .5.5 1.4.7 2.4.4.9-.3 1.8-.3 2.6 0 1 .3 1.9.1 2.4-.4.5-.6 1.3-.9 2.3-1 1.5-.2 2.5-.5 2.5-1.1 0-.3-.2-.5-.6-.6-1.6-.4-3.2-1.7-3.3-3.4 0-.4.2-.6.6-.7 1-.2 2.4-.6 2.4-1.4 0-.4-.3-.7-.8-.8-1.1-.2-2-.6-2.5-1.1.1-.8.3-1.9.3-3.3 0-3.1-1.8-5.2-4.6-5.2Z"/>'
 };return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(paths[name]||"")+'</svg>'}
 function applyConfig(){
- const parts=brandParts(config.brandName);$("#brandHeader").textContent=parts[0];$("#brandHeaderAccent").textContent=parts[1];$("#brandFooter").textContent=parts[0];$("#brandFooterAccent").textContent=parts[1];$("#heroBrand").textContent=config.brandName+"!";$("#brandCopyright").textContent=config.brandName;document.title=config.brandName+" | Handmade Crochet Magic";
+ const parts=brandParts(config.brandName);$("#brandHeader").textContent=parts[0];$("#brandHeaderAccent").textContent=parts[1];$("#brandFooter").textContent=parts[0];$("#brandFooterAccent").textContent=parts[1];const oldHeroBrand=$("#heroBrand");if(oldHeroBrand)oldHeroBrand.textContent=config.brandName+"!";$("#brandCopyright").textContent=config.brandName;document.title=config.brandName+" | Handmade Crochet Magic";
  const email=config.developerEmail||FALLBACK_CONFIG.developerEmail;$("#developerEmail").href="mailto:"+email+"?subject="+encodeURIComponent("Website design and development enquiry");$("#developerEmail span:last-child").textContent=email;
  const social=$("#socialLinks"),showcase=$("#socialShowcase");social.innerHTML="";showcase.innerHTML="";
  const socialNames={youtube:"YouTube",instagram:"Instagram",x:"X",facebook:"Facebook",snapchat:"Snapchat"};
@@ -341,33 +369,38 @@ function startHeroSlideTimer(){
  heroSlideTimer=setInterval(()=>setHeroSlide(activeHeroSlide+1),5800);
 }
 function setHeroSlide(index){
- const slides=heroSlides();if(!slides.length)return;
+ const slides=heroSlides();
+ if(!slides.length)return;
  activeHeroSlide=(index+slides.length)%slides.length;
- const slide=slides[activeHeroSlide],caption=$("#home .hero-caption");
+ const slide=slides[activeHeroSlide];
+ const caption=$("#home .hero-caption");
  if(caption)caption.classList.add("changing");
- window.setTimeout(()=>{
-  $("#heroSlideKicker").textContent=slide.kicker;
-  $("#heroSlideTitle").textContent=slide.title;
-  $("#heroSlideDescription").textContent=slide.description;
-  $("#heroPrimaryCta").textContent=slide.primary+" ➜";
-  $("#heroPrimaryCta").href="#friends";
-  $("#heroSecondaryCta").textContent=activeHeroSlide===0?"Explore crochet toys":slide.secondary;
-  $("#heroSecondaryCta").href="#shop";
+ const update=()=>{
+  const kicker=$("#heroSlideKicker"),title=$("#heroSlideTitle"),description=$("#heroSlideDescription");
+  const primary=$("#heroPrimaryCta"),secondary=$("#heroSecondaryCta"),dots=$("#heroSlideDots");
+  if(kicker)kicker.textContent=slide.kicker;
+  if(title)title.textContent=slide.title;
+  if(description)description.textContent=slide.description;
+  if(primary){primary.textContent=slide.primary+" ➜";primary.href="#friends"}
+  if(secondary){secondary.textContent=activeHeroSlide===0?"Explore crochet toys":"Explore all crochet toys";secondary.href="#shop"}
   document.querySelectorAll(".hero-friend").forEach(img=>{
-   const active=img.dataset.heroFriend===slide.id;
-   img.classList.toggle("is-highlighted",active);
-   img.classList.toggle("is-muted",activeHeroSlide>0&&!active);
+   const active=activeHeroSlide>0&&img.dataset.heroFriend===slide.id;
+   img.classList.toggle("is-featured",active);
+   img.classList.toggle("is-hidden",activeHeroSlide>0&&!active);
+   img.classList.toggle("is-muted",false);
   });
-  $("#heroSlideDots").querySelectorAll(".hero-slide-dot").forEach((dot,i)=>dot.setAttribute("aria-current",String(i===activeHeroSlide)));
+  if(dots)dots.querySelectorAll(".hero-slide-dot").forEach((dot,i)=>dot.setAttribute("aria-current",String(i===activeHeroSlide)));
   if(caption)caption.classList.remove("changing");
- },170);
+ };
+ if(typeof requestAnimationFrame==="function")requestAnimationFrame(update);else update();
 }
 function setupHeroCarousel(){
- const dots=$("#heroSlideDots");if(!dots)return;
+ const dots=$("#heroSlideDots"),prev=$("#heroSlidePrev"),next=$("#heroSlideNext");
+ if(!dots||!prev||!next)return;
  dots.innerHTML=heroSlides().map((s,i)=>'<button type="button" class="hero-slide-dot" data-hero-slide="'+i+'" aria-label="Show '+esc(s.title)+'" aria-current="'+String(i===0)+'"></button>').join("");
  dots.querySelectorAll("[data-hero-slide]").forEach(b=>b.addEventListener("click",()=>{setHeroSlide(Number(b.dataset.heroSlide));startHeroSlideTimer()}));
- $("#heroSlidePrev").addEventListener("click",()=>{setHeroSlide(activeHeroSlide-1);startHeroSlideTimer()});
- $("#heroSlideNext").addEventListener("click",()=>{setHeroSlide(activeHeroSlide+1);startHeroSlideTimer()});
+ prev.addEventListener("click",()=>{setHeroSlide(activeHeroSlide-1);startHeroSlideTimer()});
+ next.addEventListener("click",()=>{setHeroSlide(activeHeroSlide+1);startHeroSlideTimer()});
  const hero=$("#home");
  if(hero){
   hero.addEventListener("pointerenter",stopHeroSlideTimer);
@@ -375,7 +408,8 @@ function setupHeroCarousel(){
   hero.addEventListener("focusin",stopHeroSlideTimer);
   hero.addEventListener("focusout",startHeroSlideTimer);
  }
- setHeroSlide(0);startHeroSlideTimer();
+ setHeroSlide(0);
+ startHeroSlideTimer();
 }
 function renderCharacters(){
  const grid=$("#characterGrid");if(!grid||!characters.length)return;
@@ -387,7 +421,7 @@ function renderCharacters(){
 async function loadSite(){
  try{const results=await Promise.all([fetch("./site-config.json",{cache:"no-cache"}),fetch("./products.json",{cache:"no-cache"}),fetch("./characters.json",{cache:"no-cache"})]);if(results[0].ok)config=Object.assign({},FALLBACK_CONFIG,await results[0].json());if(results[1].ok){const data=await results[1].json();products=Array.isArray(data)?data:(data.products||[])}if(results[2].ok){const data=await results[2].json();characters=Array.isArray(data)?data:(data.characters||[])}}
  catch(err){console.warn("Using fallback product settings.",err)}
- applyConfig();renderCharacters();renderProducts();const code=new URLSearchParams(location.search).get("product");if(code){const match=products.find(p=>p.code===code);if(match)setTimeout(()=>openProduct(match),250)}
+ try{applyConfig()}catch(err){console.error("Loopsy Land configuration error:",err)}try{renderCharacters()}catch(err){console.error("Character section failed to render:",err)}try{renderProducts()}catch(err){console.error("Product catalogue failed to render:",err)}const code=new URLSearchParams(location.search).get("product");if(code){const match=products.find(p=>p.code===code);if(match)setTimeout(()=>openProduct(match),250)}
 }
 loadSite();
 </script></body></html>
