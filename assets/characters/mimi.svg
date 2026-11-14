@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="480" viewBox="0 0 360 480" role="img" aria-label="Original Loopsy Land crochet character"><defs>
+ <radialGradient id="bg" cx="50%" cy="35%"><stop stop-color="#fff" stop-opacity=".96"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+ <linearGradient id="light" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".72"/><stop offset=".45" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#59366f" stop-opacity=".12"/></linearGradient>
+ <pattern id="stitches" width="18" height="16" patternUnits="userSpaceOnUse"><path d="M2 5Q9 -1 16 5M2 13Q9 7 16 13" fill="none" stroke="#75566d" stroke-width="1.4" stroke-linecap="round" opacity=".27"/></pattern>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="12"/><feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ </defs><rect width="360" height="480" rx="34" fill="#fff" fill-opacity="0"/><circle cx="180" cy="220" r="162" fill="url(#bg)"/><ellipse cx="180" cy="438" rx="112" ry="15" fill="#6c527a" opacity=".13"/>
+<g filter="url(#shadow)">
+ <ellipse cx="180" cy="353" rx="90" ry="78" fill="#fff0de" stroke="#d9c5ac" stroke-width="5"/><ellipse cx="180" cy="353" rx="90" ry="78" fill="url(#stitches)"/>
+ <path d="M103 349Q180 322 257 349L244 420Q180 452 116 420Z" fill="#ed88b3" stroke="#bd5c8d" stroke-width="5"/><path d="M103 349Q180 322 257 349L244 420Q180 452 116 420Z" fill="url(#stitches)"/>
+ <ellipse cx="135" cy="414" rx="31" ry="19" fill="#fff0de" stroke="#d9c5ac" stroke-width="4"/><ellipse cx="225" cy="414" rx="31" ry="19" fill="#fff0de" stroke="#d9c5ac" stroke-width="4"/>
+ <path d="M40 218Q41 80 180 70Q319 80 320 218Q260 260 180 256Q100 260 40 218Z" fill="#e94e77" stroke="#a92e62" stroke-width="7"/>
+ <path d="M40 218Q41 80 180 70Q319 80 320 218Q260 260 180 256Q100 260 40 218Z" fill="url(#stitches)"/>
+ <g fill="#fff9e8" stroke="#e7b1bc" stroke-width="3"><ellipse cx="107" cy="150" rx="18" ry="25"/><ellipse cx="181" cy="117" rx="18" ry="25"/><ellipse cx="252" cy="151" rx="18" ry="25"/><ellipse cx="73" cy="214" rx="13" ry="18"/><ellipse cx="286" cy="214" rx="13" ry="18"/></g>
+ <ellipse cx="180" cy="285" rx="88" ry="83" fill="#fff0de" stroke="#d9c5ac" stroke-width="5"/><ellipse cx="180" cy="285" rx="88" ry="83" fill="url(#stitches)"/>
+ <path d="M142 288Q145 304 158 304M218 288Q215 304 202 304" stroke="#45333f" fill="none" stroke-width="6" stroke-linecap="round"/><path d="M169 313Q180 326 191 313" stroke="#45333f" fill="none" stroke-width="4" stroke-linecap="round"/>
+ <ellipse cx="128" cy="321" rx="14" ry="9" fill="#f6a1b8"/><ellipse cx="232" cy="321" rx="14" ry="9" fill="#f6a1b8"/>
+ <circle cx="180" cy="373" r="20" fill="#ffdf68" stroke="#e7a74b" stroke-width="4"/><g fill="#fff4df"><ellipse cx="180" cy="346" rx="9" ry="18"/><ellipse cx="206" cy="373" rx="18" ry="9"/><ellipse cx="180" cy="400" rx="9" ry="18"/><ellipse cx="154" cy="373" rx="18" ry="9"/></g>
+</g><path d="M44 382Q180 405 316 382" fill="none" stroke="#fff" stroke-width="3" opacity=".35"/></svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="480" viewBox="0 0 360 480" role="img" aria-label="Original Loopsy Land crochet character"><defs>
+ <radialGradient id="bg" cx="50%" cy="35%"><stop stop-color="#fff" stop-opacity=".96"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+ <linearGradient id="light" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".72"/><stop offset=".45" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#59366f" stop-opacity=".12"/></linearGradient>
+ <pattern id="stitches" width="18" height="16" patternUnits="userSpaceOnUse"><path d="M2 5Q9 -1 16 5M2 13Q9 7 16 13" fill="none" stroke="#75566d" stroke-width="1.4" stroke-linecap="round" opacity=".27"/></pattern>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="12"/><feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ </defs><rect width="360" height="480" rx="34" fill="#fff" fill-opacity="0"/><circle cx="180" cy="220" r="162" fill="url(#bg)"/><ellipse cx="180" cy="438" rx="112" ry="15" fill="#6c527a" opacity=".13"/>
+<g filter="url(#shadow)">
+ <g fill="none" stroke="#9657d6" stroke-width="28" stroke-linecap="round">
+  <path d="M127 315Q67 350 52 411"/><path d="M149 335Q104 388 112 433"/><path d="M178 342Q160 391 177 440"/><path d="M207 335Q224 390 244 430"/>
+  <path d="M230 315Q289 347 309 406"/><path d="M240 287Q308 293 329 347"/><path d="M119 285Q55 285 36 337"/><path d="M181 335Q179 400 201 448"/>
+ </g>
+ <g fill="#c99aef"><circle cx="52" cy="411" r="15"/><circle cx="112" cy="433" r="15"/><circle cx="177" cy="440" r="15"/><circle cx="244" cy="430" r="15"/><circle cx="309" cy="406" r="15"/><circle cx="329" cy="347" r="15"/><circle cx="36" cy="337" r="15"/><circle cx="201" cy="448" r="15"/></g>
+ <ellipse cx="180" cy="276" rx="111" ry="102" fill="#a65be1" stroke="#7135ab" stroke-width="5"/><ellipse cx="180" cy="276" rx="111" ry="102" fill="url(#stitches)"/>
+ <path d="M92 190Q90 142 139 151L170 173Q181 139 225 147Q269 155 270 196" fill="none" stroke="#f7c63d" stroke-width="15" stroke-linecap="round"/>
+ <ellipse cx="140" cy="186" rx="40" ry="32" fill="#267cb4" stroke="#f7c63d" stroke-width="10"/><ellipse cx="221" cy="186" rx="40" ry="32" fill="#267cb4" stroke="#f7c63d" stroke-width="10"/><path d="M178 185Q180 170 184 184" fill="none" stroke="#f7c63d" stroke-width="9"/>
+ <ellipse cx="143" cy="276" rx="12" ry="16" fill="#392747"/><ellipse cx="219" cy="276" rx="12" ry="16" fill="#392747"/><circle cx="147" cy="270" r="4" fill="#fff"/><circle cx="223" cy="270" r="4" fill="#fff"/>
+ <ellipse cx="109" cy="309" rx="16" ry="10" fill="#ff94c4"/><ellipse cx="251" cy="309" rx="16" ry="10" fill="#ff94c4"/>
+ <path d="M160 311Q180 326 200 311Q196 344 180 345Q164 342 160 311" fill="#592c77"/><path d="M164 315Q180 331 196 315" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+ <path d="M85 252Q104 222 127 232M233 233Q260 218 277 250" fill="none" stroke="#fff" stroke-width="8" opacity=".3" stroke-linecap="round"/>
+</g><path d="M44 382Q180 405 316 382" fill="none" stroke="#fff" stroke-width="3" opacity=".35"/></svg>

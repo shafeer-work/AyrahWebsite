@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="480" viewBox="0 0 360 480" role="img" aria-label="Original Loopsy Land crochet character"><defs>
+ <radialGradient id="bg" cx="50%" cy="35%"><stop stop-color="#fff" stop-opacity=".96"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+ <linearGradient id="light" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".72"/><stop offset=".45" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#59366f" stop-opacity=".12"/></linearGradient>
+ <pattern id="stitches" width="18" height="16" patternUnits="userSpaceOnUse"><path d="M2 5Q9 -1 16 5M2 13Q9 7 16 13" fill="none" stroke="#75566d" stroke-width="1.4" stroke-linecap="round" opacity=".27"/></pattern>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="12"/><feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ </defs><rect width="360" height="480" rx="34" fill="#fff" fill-opacity="0"/><circle cx="180" cy="220" r="162" fill="url(#bg)"/><ellipse cx="180" cy="438" rx="112" ry="15" fill="#6c527a" opacity=".13"/>
+<g filter="url(#shadow)">
+ <ellipse cx="126" cy="100" rx="43" ry="92" transform="rotate(-13 126 100)" fill="#f5e9d7" stroke="#d6c4ad" stroke-width="4"/><ellipse cx="126" cy="102" rx="23" ry="69" transform="rotate(-13 126 102)" fill="#f3a7b9"/>
+ <ellipse cx="234" cy="100" rx="43" ry="92" transform="rotate(13 234 100)" fill="#f5e9d7" stroke="#d6c4ad" stroke-width="4"/><ellipse cx="234" cy="102" rx="23" ry="69" transform="rotate(13 234 102)" fill="#f3a7b9"/>
+ <ellipse cx="180" cy="348" rx="96" ry="92" fill="#f7ead8" stroke="#d8c8b3" stroke-width="5"/><ellipse cx="180" cy="348" rx="96" ry="92" fill="url(#stitches)"/>
+ <ellipse cx="123" cy="410" rx="48" ry="32" fill="#f7ead8" stroke="#d8c8b3" stroke-width="4"/><ellipse cx="237" cy="410" rx="48" ry="32" fill="#f7ead8" stroke="#d8c8b3" stroke-width="4"/>
+ <circle cx="180" cy="226" r="111" fill="#fff3e3" stroke="#d8c8b3" stroke-width="5"/><circle cx="180" cy="226" r="111" fill="url(#stitches)"/>
+ <ellipse cx="141" cy="230" rx="12" ry="17" fill="#35283c"/><ellipse cx="219" cy="230" rx="12" ry="17" fill="#35283c"/><circle cx="145" cy="224" r="4" fill="#fff"/><circle cx="223" cy="224" r="4" fill="#fff"/>
+ <ellipse cx="112" cy="264" rx="17" ry="10" fill="#ff9bb2" opacity=".8"/><ellipse cx="248" cy="264" rx="17" ry="10" fill="#ff9bb2" opacity=".8"/>
+ <path d="M169 250Q180 239 191 250Q190 264 180 266Q170 263 169 250" fill="#70413b"/><path d="M180 265Q174 284 158 278M180 265Q186 284 202 278" fill="none" stroke="#70413b" stroke-width="4" stroke-linecap="round"/>
+ <path d="M101 318Q180 341 259 318L251 350Q180 374 109 350Z" fill="#49a85c" stroke="#287b44" stroke-width="5"/><path d="M113 328Q180 348 247 328" fill="none" stroke="#b7ef8a" stroke-width="5" stroke-linecap="round"/>
+ <path d="M114 354L95 403Q143 429 190 414L209 355Z" fill="#925b37" stroke="#643d2b" stroke-width="5"/><path d="M114 354L95 403Q143 429 190 414L209 355Z" fill="url(#stitches)"/><circle cx="145" cy="376" r="7" fill="#e9b84e"/><circle cx="180" cy="381" r="7" fill="#e9b84e"/>
+ <path d="M234 356L260 393L287 389L268 352Z" fill="#f4a126" stroke="#d47a16" stroke-width="4"/><path d="M260 353Q252 336 271 332Q279 344 273 354M266 352Q277 330 291 338Q286 352 274 359" fill="#5aaf56" stroke="#398344" stroke-width="3"/>
+ <path d="M99 342Q77 366 84 392" fill="none" stroke="#f4eadc" stroke-width="21" stroke-linecap="round"/><path d="M261 344Q285 349 292 371" fill="none" stroke="#f4eadc" stroke-width="21" stroke-linecap="round"/>
+ <path d="M65 392L52 402M70 404L55 417M287 400L301 411" stroke="#f0b3c3" stroke-width="5" stroke-linecap="round"/>
+</g><path d="M95 160Q125 135 151 155" fill="none" stroke="#fff" stroke-width="7" opacity=".45" stroke-linecap="round"/>
+<path d="M44 382Q180 405 316 382" fill="none" stroke="#fff" stroke-width="3" opacity=".35"/></svg>

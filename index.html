@@ -81,7 +81,13 @@ footer{padding:25px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.foot
 .hero-character-dots{position:absolute;z-index:4;bottom:1px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;pointer-events:auto}
 .hero-character-dot{width:10px;height:10px;padding:0;border:2px solid #fff;border-radius:50%;background:#ffffff88;box-shadow:0 2px 7px #32104b40;cursor:pointer;transition:transform .2s,background .2s}
 .hero-character-dot[aria-current="true"]{background:#ff4297;transform:scale(1.35)}
-.friends-section{background:linear-gradient(135deg,#fff8fd 0%,#f5efff 48%,#eafaf7 100%);overflow:hidden}
+.friends-section{padding:54px 0 58px;background:linear-gradient(135deg,#fff8fd 0%,#f5efff 48%,#eafaf7 100%);overflow:hidden}
+.friends-section .section-head{margin-bottom:26px}
+.character-card.reveal{opacity:1;transform:none}
+.hero-character-picture img,.character-card-media img{background:transparent}
+.hero-character-picture{background:#fffaf4}
+.character-card-media{background:var(--character-tint)}
+
 .friends-section:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 7% 18%,#ffdbef88 0 7%,transparent 17%),radial-gradient(circle at 92% 80%,#d9f5e988 0 8%,transparent 20%)}
 .character-grid{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;align-items:stretch}
 .character-card{--character-tint:#fff0d0;min-width:0;background:linear-gradient(180deg,var(--character-tint),#fff 78%);border:2px solid #fff;border-radius:25px;padding:10px;box-shadow:0 12px 28px rgba(77,34,99,.11);display:flex;flex-direction:column;overflow:hidden;transition:transform .25s,box-shadow .25s}
@@ -270,7 +276,7 @@ function renderCharacters(){
  track.style.width=(count*100)+"%";
  track.innerHTML=characters.map((c,i)=>'<div class="hero-character-slide" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' of '+count+': '+esc(c.name)+'" style="flex-basis:'+slideWidth+'%"><div class="hero-character-picture"><img src="'+esc(c.image)+'" alt="'+esc(c.name)+' the '+esc(c.title)+'" '+(i===0?'fetchpriority="high"':'loading="lazy"')+'></div><div class="hero-character-name"><strong>'+esc(c.name)+'</strong><small>'+esc(c.title)+'</small></div></div>').join("");
  dots.innerHTML=characters.map((c,i)=>'<button class="hero-character-dot" type="button" data-character-dot="'+i+'" aria-label="Show '+esc(c.name)+'" aria-current="'+String(i===0)+'"></button>').join("");
- grid.innerHTML=characters.map((c,i)=>'<article class="character-card reveal" style="--character-tint:'+esc(c.tint||"#fff0d0")+'"><div class="character-card-media"><img src="'+esc(c.image)+'" alt="'+esc(c.name)+', '+esc(c.title)+'" loading="lazy"></div><div class="character-card-copy"><h3>'+esc(c.name)+'</h3><div class="character-role">'+esc(c.title)+'</div><p class="character-description">'+esc(c.description)+'</p><div class="character-quote">“'+esc(c.catchphrase)+'”</div><button type="button" class="character-spotlight" data-character-index="'+i+'">Meet '+esc(c.name)+' <span aria-hidden="true">→</span></button></div></article>').join("");
+ grid.innerHTML=characters.map((c,i)=>'<article class="character-card" style="--character-tint:'+esc(c.tint||"#fff0d0")+'"><div class="character-card-media"><img src="'+esc(c.image)+'" alt="'+esc(c.name)+', '+esc(c.title)+'" loading="lazy"></div><div class="character-card-copy"><h3>'+esc(c.name)+'</h3><div class="character-role">'+esc(c.title)+'</div><p class="character-description">'+esc(c.description)+'</p><div class="character-quote">“'+esc(c.catchphrase)+'”</div><button type="button" class="character-spotlight" data-character-index="'+i+'">Meet '+esc(c.name)+' <span aria-hidden="true">→</span></button></div></article>').join("");
  dots.querySelectorAll("[data-character-dot]").forEach(b=>b.addEventListener("click",()=>{setHeroCharacter(Number(b.dataset.characterDot));startHeroCharacterTimer()}));
  const carousel=$("#heroCharacterCarousel");
  $("#heroCharacterPrev").addEventListener("click",()=>{setHeroCharacter(heroCharacterIndex-1);startHeroCharacterTimer()});
