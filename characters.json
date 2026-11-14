@@ -1,0 +1,49 @@
+{
+  "characters": [
+    {
+      "id": "bobo",
+      "name": "Bobo",
+      "title": "The Brave Bunny",
+      "description": "Curious, kind and always ready to turn a little question into a big adventure.",
+      "catchphrase": "Come on, let's explore!",
+      "image": "assets/characters/bobo.webp",
+      "tint": "#fff0c8"
+    },
+    {
+      "id": "ollie",
+      "name": "Ollie",
+      "title": "The Playful Octopus",
+      "description": "Bubbly, funny and full of wild ideas. Ollie can find a new game in almost anything.",
+      "catchphrase": "I've got eight ideas!",
+      "image": "assets/characters/ollie.webp",
+      "tint": "#f0e2ff"
+    },
+    {
+      "id": "coco",
+      "name": "Coco",
+      "title": "The Cozy Capy",
+      "description": "Calm, caring and everyone's best friend. Coco always makes room for one more.",
+      "catchphrase": "There's always room for a friend.",
+      "image": "assets/characters/coco.webp",
+      "tint": "#ffebd5"
+    },
+    {
+      "id": "tilly",
+      "name": "Tilly",
+      "title": "The Curious Turtle",
+      "description": "Thoughtful, clever and happiest when learning something new with a friend.",
+      "catchphrase": "But why? Let's find out!",
+      "image": "assets/characters/tilly.webp",
+      "tint": "#e5f5d8"
+    },
+    {
+      "id": "mimi",
+      "name": "Mimi",
+      "title": "The Magic Mushroom",
+      "description": "Creative, cheerful and always ready to add a little sparkle to an ordinary day.",
+      "catchphrase": "Let's make something magical!",
+      "image": "assets/characters/mimi.webp",
+      "tint": "#ffe5f0"
+    }
+  ]
+}

@@ -62,6 +62,48 @@ footer{padding:25px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.foot
 @media(max-width:560px){.wrap{width:calc(100% - 28px)}.brand{font-size:21px}.hero-copy{padding:24px 17px;border-radius:25px}h1{font-size:48px;letter-spacing:-2px}.hero-copy p{font-size:15px}.hero-stage{height:300px}.bunny{width:107px;left:11%;bottom:76px}.bear{width:93px;left:44%;bottom:76px}.cottage{width:83px;right:7%;bottom:126px}.island{height:112px;bottom:24px}.rainbow{width:130px;height:105px;right:0;top:3px;border-width:9px}.rainbow:before{inset:9px;border-width:8px}.rainbow:after{inset:27px;border-width:8px}.products{grid-template-columns:1fr;gap:17px}.product-card{height:330px}.steps{grid-template-columns:1fr}.values{grid-template-columns:1fr 1fr}.footer-row{justify-content:center;text-align:center}.footer-right{justify-content:center}.developer-inner{justify-content:center;text-align:center}.details-grid{gap:8px}.modal-backdrop{padding:10px}.product-modal{max-height:95vh;border-radius:22px}.modal-media{min-height:220px;max-height:235px}.modal-info{padding:23px 18px 21px}.modal-info h2{font-size:31px}.modal-emoji{font-size:110px}}
 @media(hover:none){.product-card:hover .flip-inner{transform:none}.product-card.is-flipped .flip-inner{transform:rotateY(180deg)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Loopsy Land character world */
+#heroStage .mascot{display:none}
+.hero-character-carousel{position:absolute;inset:3% 4% 1%;z-index:9;display:flex;align-items:stretch;pointer-events:auto}
+.hero-character-window{position:relative;width:100%;height:100%;overflow:hidden}
+.hero-character-track{display:flex;height:100%;transition:transform .78s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.hero-character-slide{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;box-sizing:border-box;padding:6px 8px}
+.hero-character-picture{width:min(74%,300px);height:78%;max-height:370px;overflow:hidden;border:5px solid rgba(255,255,255,.96);border-radius:38px 38px 27px 27px;box-shadow:0 18px 36px rgba(46,20,73,.28),0 0 0 2px rgba(255,255,255,.3);background:#fff;transform:rotate(-1.4deg)}
+.hero-character-slide:nth-child(even) .hero-character-picture{transform:rotate(1.4deg)}
+.hero-character-picture img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.hero-character-name{min-width:154px;max-width:92%;padding:8px 18px;border:2px solid #fff;border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 7px 16px rgba(49,21,79,.16);text-align:center;line-height:1.1;color:#542067}
+.hero-character-name strong{display:block;font-size:15px;font-weight:1000}
+.hero-character-name small{display:block;margin-top:3px;font-size:10px;font-weight:850;color:#8b5a91}
+.hero-character-arrow{position:absolute;z-index:3;top:40%;width:38px;height:38px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;background:#fff;color:#71328b;box-shadow:0 6px 16px #32104b30;font-size:22px;font-weight:1000;cursor:pointer;transition:transform .2s,background .2s}
+.hero-character-arrow:hover{transform:scale(1.1);background:#fff1f8}
+.hero-character-arrow.prev{left:-2px}.hero-character-arrow.next{right:-2px}
+.hero-character-dots{position:absolute;z-index:4;bottom:1px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;pointer-events:auto}
+.hero-character-dot{width:10px;height:10px;padding:0;border:2px solid #fff;border-radius:50%;background:#ffffff88;box-shadow:0 2px 7px #32104b40;cursor:pointer;transition:transform .2s,background .2s}
+.hero-character-dot[aria-current="true"]{background:#ff4297;transform:scale(1.35)}
+.friends-section{background:linear-gradient(135deg,#fff8fd 0%,#f5efff 48%,#eafaf7 100%);overflow:hidden}
+.friends-section:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 7% 18%,#ffdbef88 0 7%,transparent 17%),radial-gradient(circle at 92% 80%,#d9f5e988 0 8%,transparent 20%)}
+.character-grid{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;align-items:stretch}
+.character-card{--character-tint:#fff0d0;min-width:0;background:linear-gradient(180deg,var(--character-tint),#fff 78%);border:2px solid #fff;border-radius:25px;padding:10px;box-shadow:0 12px 28px rgba(77,34,99,.11);display:flex;flex-direction:column;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.character-card:hover{transform:translateY(-7px) rotate(-.6deg);box-shadow:0 20px 35px rgba(77,34,99,.17)}
+.character-card:nth-child(even):hover{transform:translateY(-7px) rotate(.6deg)}
+.character-card-media{height:218px;overflow:hidden;border-radius:18px;background:var(--character-tint);position:relative}
+.character-card-media:after{content:"";position:absolute;inset:auto 0 0;height:34%;background:linear-gradient(transparent,rgba(60,28,78,.12));pointer-events:none}
+.character-card-media img{width:100%;height:100%;object-fit:cover;object-position:center 38%;transition:transform .5s}
+.character-card:hover .character-card-media img{transform:scale(1.055)}
+.character-card-copy{padding:12px 8px 5px;display:flex;flex-direction:column;flex:1}
+.character-card h3{font-size:21px;line-height:1.05;margin:0;color:#542067;font-weight:1000}
+.character-role{margin:5px 0 9px;font-size:11px;font-weight:1000;letter-spacing:.02em;color:#e13e8b}
+.character-description{font-size:12px;line-height:1.5;color:#70577c;font-weight:650;margin:0 0 10px;min-height:54px}
+.character-quote{margin:auto 0 12px;padding:8px 10px;border-radius:13px;background:#fff9;border:1px dashed #e7c6e5;color:#754281;font-size:11px;font-weight:900;line-height:1.35}
+.character-spotlight{width:100%;border:0;border-radius:99px;padding:10px 12px;background:linear-gradient(100deg,#ff4498,#9257e8);color:#fff;font-size:12px;font-weight:1000;cursor:pointer;box-shadow:0 5px 0 #c73c89;transition:transform .2s,box-shadow .2s}
+.character-spotlight:hover{transform:translateY(-3px);box-shadow:0 8px 0 #c73c89}
+.character-card:nth-child(2) .character-role{color:#8951c9}.character-card:nth-child(3) .character-role{color:#bb762a}.character-card:nth-child(4) .character-role{color:#438b59}.character-card:nth-child(5) .character-role{color:#dd528d}
+@media(max-width:1050px){.character-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.character-card-media{height:230px}}
+@media(max-width:880px){.hero-character-picture{width:min(58%,280px);height:72%;max-height:265px}.hero-character-arrow{top:38%;width:34px;height:34px}.character-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.hero-character-carousel{inset:2% 1% 0}.hero-character-picture{width:min(62%,210px);height:70%;max-height:205px;border-width:4px;border-radius:26px}.hero-character-name{padding:6px 14px;min-width:130px}.hero-character-name strong{font-size:13px}.hero-character-name small{font-size:9px}.hero-character-arrow{top:36%;width:30px;height:30px;font-size:18px}.hero-character-dot{width:9px;height:9px}.character-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.character-card{padding:7px;border-radius:19px}.character-card-media{height:170px;border-radius:14px}.character-card-copy{padding:10px 5px 4px}.character-card h3{font-size:18px}.character-role{font-size:10px}.character-description{font-size:11px;min-height:66px}.character-quote{font-size:10px;padding:7px}.character-spotlight{font-size:11px;padding:9px 6px}}
+@media(prefers-reduced-motion:reduce){.hero-character-track{transition:none}.character-card,.character-card-media img,.character-spotlight{transition:none}}
+
 </style>
 </head>
 <body>
@@ -69,7 +111,7 @@ footer{padding:25px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.foot
 <header id="siteHeader"><div class="wrap nav">
 <a class="brand" href="#home" aria-label="Home"><span class="logo">🧶</span><span class="brand-name"><span id="brandHeader">Loopsy</span> <b id="brandHeaderAccent">Land</b></span></a>
 <nav class="navlinks" id="navlinks" aria-label="Main navigation">
-<a class="navlink active" href="#home">Home</a>
+<a class="navlink active" href="#home">Home</a><a class="navlink" href="#friends">Our friends</a>
 <div class="nav-dropdown" id="productDropdown"><a class="navlink drop-toggle" href="#shop" id="productsMenu" aria-haspopup="true" aria-expanded="false">The goodies <span class="chevron">▼</span></a><div class="dropdown-menu" id="categoryMenu"><a href="#shop" data-nav-filter="all">✨ All the goodies</a><a href="#shop" data-nav-filter="Toys">🧸 Toys</a><a href="#shop" data-nav-filter="Accessories">🎀 Accessories</a><a href="#shop" data-nav-filter="Decor">🌸 Décor</a></div></div>
 <a class="navlink" href="#about">Our story</a><a class="navlink" href="#how">How to order</a><a class="navlink" href="#contact">Contact</a></nav>
 <a class="whatsapp-btn nav-cta whatsapp-link" href="#" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9.6 9.6 0 0 1-4.9-1.3l-.4-.2-3.6 1 1-3.5-.2-.4A9.6 9.6 0 1 1 12 21Zm5.3-7.2c-.3-.2-1.7-.9-2-.9s-.5-.2-.7.2-.8.9-.9 1.1-.3.2-.6.1a7.8 7.8 0 0 1-2.3-1.4 8.6 8.6 0 0 1-1.6-2c-.2-.3 0-.4.2-.6l.4-.5.2-.5-.1-.5c-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.2 3 .2.4.4.6a10.8 10.8 0 0 0 4.2 3.7c.6.3 1.1.5 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.7-.7 2-1.3s.3-1.2.2-1.3-.2-.2-.5-.4Z"/></svg><span>Chat on WhatsApp</span></a>
@@ -99,8 +141,26 @@ footer{padding:25px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.foot
 <div class="scene-layer cottage" data-depth=".2"><svg viewBox="0 0 150 150" role="img" aria-label="Crochet cottage"><defs><linearGradient id="wall" x2="0" y2="1"><stop stop-color="#ffe8b9"/><stop offset="1" stop-color="#efa56e"/></linearGradient><linearGradient id="roof" x2="1" y2="1"><stop stop-color="#ff6c98"/><stop offset="1" stop-color="#c63f83"/></linearGradient></defs><path d="M28 67 75 25l48 42v68H28Z" fill="url(#wall)" stroke="#a65d68" stroke-width="5" stroke-linejoin="round"/><path d="m17 69 58-53 58 53-10 10-48-42-48 42Z" fill="url(#roof)" stroke="#983a79" stroke-width="5" stroke-linejoin="round"/><path d="M64 94h23v41H64Z" fill="#9a5b50" stroke="#78425d" stroke-width="3"/><circle cx="81" cy="114" r="2.5" fill="#ffe39b"/><rect x="37" y="79" width="19" height="21" rx="4" fill="#68c9e9" stroke="#fff4cb" stroke-width="3"/><path d="M46 79v21M37 89h19" stroke="#fff4cb" stroke-width="2"/><rect x="98" y="79" width="19" height="21" rx="4" fill="#68c9e9" stroke="#fff4cb" stroke-width="3"/><path d="M107 79v21M98 89h19" stroke="#fff4cb" stroke-width="2"/><path d="M25 136h104" stroke="#5a9b6c" stroke-width="7" stroke-linecap="round"/></svg></div>
 <div class="scene-layer mascot bunny" data-depth=".28"><svg viewBox="0 0 160 180" role="img" aria-label="Crochet bunny"><defs><radialGradient id="bunnyFur" cx=".35" cy=".2"><stop stop-color="#fff"/><stop offset=".7" stop-color="#eee5ed"/><stop offset="1" stop-color="#c9bbd1"/></radialGradient><pattern id="knitBunny" width="10" height="8" patternUnits="userSpaceOnUse"><path d="M1 2q4-4 8 0M1 6q4-4 8 0" fill="none" stroke="#b9a9bf" stroke-width="1" opacity=".5"/></pattern></defs><ellipse cx="55" cy="39" rx="19" ry="39" fill="url(#bunnyFur)" stroke="#d1c4d5" stroke-width="3"/><ellipse cx="105" cy="39" rx="19" ry="39" fill="url(#bunnyFur)" stroke="#d1c4d5" stroke-width="3"/><ellipse cx="55" cy="39" rx="8" ry="26" fill="#ff9fba"/><ellipse cx="105" cy="39" rx="8" ry="26" fill="#ff9fba"/><ellipse cx="80" cy="112" rx="62" ry="58" fill="url(#bunnyFur)" stroke="#c8b9d0" stroke-width="3"/><ellipse cx="80" cy="112" rx="62" ry="58" fill="url(#knitBunny)" opacity=".8"/><circle cx="58" cy="107" r="5.5" fill="#3c3150"/><circle cx="102" cy="107" r="5.5" fill="#3c3150"/><ellipse cx="80" cy="121" rx="7" ry="5" fill="#f05b98"/><path d="M80 126q-2 12-12 8m12-8q2 12 12 8" fill="none" stroke="#5e4967" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="36" cy="122" rx="10" ry="6" fill="#ff9abc" opacity=".7"/><ellipse cx="124" cy="122" rx="10" ry="6" fill="#ff9abc" opacity=".7"/><path d="M22 123 3 117m20 18-18 4m133-36 17-6m-17 23 18 4" stroke="#a89bab" stroke-width="2.6" stroke-linecap="round"/><path d="M59 62q21-12 42 0" stroke="#ff75aa" stroke-width="8" stroke-linecap="round"/><circle cx="80" cy="61" r="8" fill="#ff458f"/></svg></div>
 <div class="scene-layer mascot bear" data-depth=".34"><svg viewBox="0 0 145 155" role="img" aria-label="Crochet teddy bear"><defs><radialGradient id="bearFur" cx=".3" cy=".2"><stop stop-color="#ffd78d"/><stop offset=".8" stop-color="#c77d39"/><stop offset="1" stop-color="#99572f"/></radialGradient><pattern id="knitBear" width="9" height="8" patternUnits="userSpaceOnUse"><path d="M1 2q3-3 7 0M1 6q3-3 7 0" fill="none" stroke="#9b5a2c" stroke-width="1" opacity=".35"/></pattern></defs><circle cx="39" cy="33" r="22" fill="url(#bearFur)" stroke="#99572f" stroke-width="3"/><circle cx="106" cy="33" r="22" fill="url(#bearFur)" stroke="#99572f" stroke-width="3"/><circle cx="39" cy="33" r="10" fill="#f4a7a2"/><circle cx="106" cy="33" r="10" fill="#f4a7a2"/><ellipse cx="72" cy="92" rx="55" ry="52" fill="url(#bearFur)" stroke="#99572f" stroke-width="3"/><ellipse cx="72" cy="92" rx="55" ry="52" fill="url(#knitBear)"/><ellipse cx="72" cy="106" rx="25" ry="20" fill="#ffe0a3"/><circle cx="53" cy="83" r="5" fill="#38233f"/><circle cx="91" cy="83" r="5" fill="#38233f"/><ellipse cx="72" cy="95" rx="9" ry="7" fill="#6b3b37"/><path d="M72 101q-9 10-17 2m17-2q9 10 17 2" fill="none" stroke="#6b3b37" stroke-width="3" stroke-linecap="round"/><ellipse cx="35" cy="126" rx="14" ry="17" fill="#d88a48" stroke="#99572f" stroke-width="3"/><ellipse cx="109" cy="126" rx="14" ry="17" fill="#d88a48" stroke="#99572f" stroke-width="3"/><path d="M39 62q33 19 66 0l-6 20q-27 13-54 0Z" fill="#48bfe6" stroke="#2684b1" stroke-width="3"/></svg></div>
+
+<div class="hero-character-carousel" id="heroCharacterCarousel" aria-label="Loopsy Land character carousel">
+ <button class="hero-character-arrow prev" id="heroCharacterPrev" type="button" aria-label="Previous character">‹</button>
+ <div class="hero-character-window"><div class="hero-character-track" id="heroCharacterTrack" aria-live="polite"></div></div>
+ <button class="hero-character-arrow next" id="heroCharacterNext" type="button" aria-label="Next character">›</button>
+ <div class="hero-character-dots" id="heroCharacterDots" aria-label="Choose a character"></div>
+</div>
 </div></div></section>
 <div class="marquee"><div class="marquee-track" aria-hidden="true"><span>🌼 HANDMADE WITH LOVE</span><span>🧸 LITTLE THINGS, BIG SMILES</span><span>🌈 COLOUR YOUR WORLD</span><span>🧶 EVERY LOOP IS MAGIC</span><span>🎁 GIFTS WITH PERSONALITY</span><span>🌼 HANDMADE WITH LOVE</span><span>🧸 LITTLE THINGS, BIG SMILES</span><span>🌈 COLOUR YOUR WORLD</span><span>🧶 EVERY LOOP IS MAGIC</span><span>🎁 GIFTS WITH PERSONALITY</span></div></div>
+
+<section class="friends-section" id="friends">
+ <div class="wrap">
+  <div class="section-head reveal">
+   <div class="kicker">✿ The friends of Threadberry Grove ✿</div>
+   <h2>Meet Our Crochet Friends!</h2>
+   <p>Five original friends, five different personalities, and plenty of little adventures to share.</p>
+  </div>
+  <div class="character-grid" id="characterGrid" aria-live="polite"></div>
+ </div>
+</section>
 <section id="shop"><div class="wrap"><div class="section-head reveal"><div class="kicker">✿ The little shop ✿</div><h2>Pick your new bestie!</h2><p>Hover over a treasure to flip its card, then choose View Closer for all the details.</p></div>
 <div class="filters reveal" id="filters" role="group" aria-label="Filter products"><button class="filter active" data-filter="all">✨ All the goodies</button><button class="filter" data-filter="Toys">🧸 Toys</button><button class="filter" data-filter="Accessories">🎀 Accessories</button><button class="filter" data-filter="Decor">🌸 Décor</button></div><div class="products" id="productsGrid" aria-live="polite"></div></div></section>
 <section class="about" id="about"><div class="wrap about-grid"><div class="about-art reveal"><span class="about-mascot">🧸</span><span class="sticker">Stitched with a smile ♡</span></div><div class="about-copy reveal"><div class="kicker">A little hello from us</div><h2>Made by hand.<br>Made to make you smile.</h2><p>Every handmade creation is made with patience, imagination and lots of love. No two pieces are exactly alike — and that's their special magic.</p><div class="values"><div class="value">💗 Thoughtfully handmade</div><div class="value">🧵 Every stitch matters</div><div class="value">🎨 Colourful & unique</div><div class="value">🎁 Lovely little gifts</div></div></div></div></section>
@@ -112,12 +172,13 @@ footer{padding:25px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.foot
 </div></section>
 <section class="developer"><div class="wrap developer-inner"><div class="developer-copy"><strong>Need a website for your own business?</strong><p>Website design and development enquiries — let's build something lovely for your brand.</p></div><a class="developer-mail" id="developerEmail" href="mailto:shafeerev.solutions@gmail.com"><span>✉</span><span>shafeerev.solutions@gmail.com</span></a></div></section>
 </main>
-<footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="logo">🧶</span><span class="brand-name"><span id="brandFooter">Loopsy</span> <b id="brandFooterAccent">Land</b></span></a><div class="footnote">Made with ♡, one loop at a time. © <span id="year"></span> <span id="brandCopyright">Loopsy Land</span></div><div class="footer-right"><div class="footerlinks"><a href="#shop">Shop</a><a href="#about">Our story</a><a href="#contact">Contact</a><a href="#follow">Social</a></div><div class="social-links" id="socialLinks" aria-label="Social media"></div></div></div></footer>
+<footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="logo">🧶</span><span class="brand-name"><span id="brandFooter">Loopsy</span> <b id="brandFooterAccent">Land</b></span></a><div class="footnote">Made with ♡, one loop at a time. © <span id="year"></span> <span id="brandCopyright">Loopsy Land</span></div><div class="footer-right"><div class="footerlinks"><a href="#friends">Our friends</a><a href="#shop">Shop</a><a href="#about">Our story</a><a href="#contact">Contact</a><a href="#follow">Social</a></div><div class="social-links" id="socialLinks" aria-label="Social media"></div></div></div></footer>
 <div class="modal-backdrop" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalName"><div class="product-modal"><button class="modal-close" id="modalClose" aria-label="Close product details">×</button><div class="modal-media" id="modalMedia"></div><div class="modal-info"><span class="modal-kicker" id="modalCategory">HANDMADE PRODUCT</span><h2 id="modalName">Product name</h2><p class="modal-description" id="modalDescription"></p><div class="price-line" id="modalPrice">Price on enquiry</div><div class="details-grid"><div class="detail"><small>Item code</small><strong id="modalCode">—</strong></div><div class="detail"><small>Crafting time</small><strong id="modalCraft">—</strong></div><div class="detail"><small>Yarn type</small><strong id="modalYarn">—</strong></div><div class="detail"><small>Colours</small><strong id="modalColours">—</strong></div><div class="detail"><small>Availability</small><strong id="modalAvailability">—</strong></div><div class="detail"><small>Product type</small><strong id="modalType">—</strong></div></div><button class="btn order-btn" id="orderProduct"><svg viewBox="0 0 24 24" aria-hidden="true" width="19" height="19" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9.6 9.6 0 0 1-4.9-1.3l-.4-.2-3.6 1 1-3.5-.2-.4A9.6 9.6 0 1 1 12 21Z"/></svg> Order this on WhatsApp</button><p class="modal-footnote">The WhatsApp message includes the product name, item code, price and photo/details link.</p></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-const FALLBACK_CONFIG={brandName:"Loopsy Land",tagline:"A colourful little universe of cuddly crochet friends, happy accessories and handmade magic. Every loop has a story!",whatsappNumber:"919895268827",developerEmail:"shafeerev.solutions@gmail.com",socialLinks:{youtube:"",instagram:"",x:"",facebook:"",snapchat:""}};
-let config=Object.assign({},FALLBACK_CONFIG),products=[],currentProduct=null,lastFocus=null,activeFilter="all";
+const FALLBACK_CONFIG={brandName:"Loopsy Land",tagline:"A colourful little universe of cuddly crochet friends, happy accessories and handmade magic. Every loop has a story!",whatsappNumber:"0000000000",developerEmail:"webstudio@example.com",socialLinks:{youtube:"",instagram:"",x:"",facebook:"",snapchat:""}};
+let config=Object.assign({},FALLBACK_CONFIG),products=[],characters=[],currentProduct=null,lastFocus=null,activeFilter="all";
+let heroCharacterIndex=0,heroCharacterTimer=null;
 const $=s=>document.querySelector(s);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const money=p=>p===null||p===undefined||p===""?"Price on enquiry":new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0}).format(Number(p));
@@ -186,10 +247,49 @@ if("IntersectionObserver"in window){const navObserver=new IntersectionObserver(e
 $("#year").textContent=new Date().getFullYear();
 const fine=matchMedia("(hover:hover) and (pointer:fine)").matches,reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 if(fine&&!reduced){let px=0,py=0,pending=false;window.addEventListener("pointermove",e=>{px=(e.clientX/innerWidth-.5)*2;py=(e.clientY/innerHeight-.5)*2;if(!pending){pending=true;requestAnimationFrame(()=>{document.querySelectorAll("#heroStage [data-depth],#heroAbstract [data-depth]").forEach(el=>{const d=Number(el.dataset.depth);el.style.translate=(px*d*42)+"px "+(py*d*32)+"px"});pending=false})}},{passive:true})}
+
+function setHeroCharacter(index){
+ if(!characters.length)return;
+ const total=characters.length;
+ heroCharacterIndex=(index+total)%total;
+ const track=$("#heroCharacterTrack"),dots=$("#heroCharacterDots");
+ if(track)track.style.transform="translateX(-"+(heroCharacterIndex*100/total)+"%)";
+ if(track)track.querySelectorAll(".hero-character-slide").forEach((slide,i)=>{slide.setAttribute("aria-hidden",String(i!==heroCharacterIndex));slide.classList.toggle("active",i===heroCharacterIndex)});
+ if(dots)dots.querySelectorAll(".hero-character-dot").forEach((dot,i)=>dot.setAttribute("aria-current",String(i===heroCharacterIndex)));
+}
+function stopHeroCharacterTimer(){if(heroCharacterTimer){clearInterval(heroCharacterTimer);heroCharacterTimer=null}}
+function startHeroCharacterTimer(){
+ stopHeroCharacterTimer();
+ if(characters.length<2||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ heroCharacterTimer=setInterval(()=>setHeroCharacter(heroCharacterIndex+1),5200);
+}
+function renderCharacters(){
+ const track=$("#heroCharacterTrack"),dots=$("#heroCharacterDots"),grid=$("#characterGrid");
+ if(!track||!dots||!grid||!characters.length)return;
+ const count=characters.length,slideWidth=100/count;
+ track.style.width=(count*100)+"%";
+ track.innerHTML=characters.map((c,i)=>'<div class="hero-character-slide" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' of '+count+': '+esc(c.name)+'" style="flex-basis:'+slideWidth+'%"><div class="hero-character-picture"><img src="'+esc(c.image)+'" alt="'+esc(c.name)+' the '+esc(c.title)+'" '+(i===0?'fetchpriority="high"':'loading="lazy"')+'></div><div class="hero-character-name"><strong>'+esc(c.name)+'</strong><small>'+esc(c.title)+'</small></div></div>').join("");
+ dots.innerHTML=characters.map((c,i)=>'<button class="hero-character-dot" type="button" data-character-dot="'+i+'" aria-label="Show '+esc(c.name)+'" aria-current="'+String(i===0)+'"></button>').join("");
+ grid.innerHTML=characters.map((c,i)=>'<article class="character-card reveal" style="--character-tint:'+esc(c.tint||"#fff0d0")+'"><div class="character-card-media"><img src="'+esc(c.image)+'" alt="'+esc(c.name)+', '+esc(c.title)+'" loading="lazy"></div><div class="character-card-copy"><h3>'+esc(c.name)+'</h3><div class="character-role">'+esc(c.title)+'</div><p class="character-description">'+esc(c.description)+'</p><div class="character-quote">“'+esc(c.catchphrase)+'”</div><button type="button" class="character-spotlight" data-character-index="'+i+'">Meet '+esc(c.name)+' <span aria-hidden="true">→</span></button></div></article>').join("");
+ dots.querySelectorAll("[data-character-dot]").forEach(b=>b.addEventListener("click",()=>{setHeroCharacter(Number(b.dataset.characterDot));startHeroCharacterTimer()}));
+ const carousel=$("#heroCharacterCarousel");
+ $("#heroCharacterPrev").addEventListener("click",()=>{setHeroCharacter(heroCharacterIndex-1);startHeroCharacterTimer()});
+ $("#heroCharacterNext").addEventListener("click",()=>{setHeroCharacter(heroCharacterIndex+1);startHeroCharacterTimer()});
+ grid.querySelectorAll(".character-spotlight").forEach(b=>b.addEventListener("click",()=>{setHeroCharacter(Number(b.dataset.characterIndex));$("#home").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});startHeroCharacterTimer()}));
+ if(carousel){
+  carousel.addEventListener("pointerenter",stopHeroCharacterTimer);
+  carousel.addEventListener("pointerleave",startHeroCharacterTimer);
+  carousel.addEventListener("focusin",stopHeroCharacterTimer);
+  carousel.addEventListener("focusout",startHeroCharacterTimer);
+ }
+ setHeroCharacter(0);
+ startHeroCharacterTimer();
+}
+
 async function loadSite(){
- try{const results=await Promise.all([fetch("./site-config.json",{cache:"no-cache"}),fetch("./products.json",{cache:"no-cache"})]);if(results[0].ok)config=Object.assign({},FALLBACK_CONFIG,await results[0].json());if(results[1].ok){const data=await results[1].json();products=Array.isArray(data)?data:(data.products||[])}}
+ try{const results=await Promise.all([fetch("./site-config.json",{cache:"no-cache"}),fetch("./products.json",{cache:"no-cache"}),fetch("./characters.json",{cache:"no-cache"})]);if(results[0].ok)config=Object.assign({},FALLBACK_CONFIG,await results[0].json());if(results[1].ok){const data=await results[1].json();products=Array.isArray(data)?data:(data.products||[])}if(results[2].ok){const data=await results[2].json();characters=Array.isArray(data)?data:(data.characters||[])}}
  catch(err){console.warn("Using fallback product settings.",err)}
- applyConfig();renderProducts();const code=new URLSearchParams(location.search).get("product");if(code){const match=products.find(p=>p.code===code);if(match)setTimeout(()=>openProduct(match),250)}
+ applyConfig();renderCharacters();renderProducts();const code=new URLSearchParams(location.search).get("product");if(code){const match=products.find(p=>p.code===code);if(match)setTimeout(()=>openProduct(match),250)}
 }
 loadSite();
 </script></body></html>
