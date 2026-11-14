@@ -192,6 +192,30 @@ footer{padding:25px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.foot
  .hero-friend.is-featured{left:20%!important;width:60%!important;height:58%!important;bottom:1%!important;transform:translateY(-3px) scale(1)!important}
 }
 
+
+/* Loopsy Land young leaders profile cards */
+.young-leaders{margin:58px auto 0;padding:38px 34px 34px;max-width:1000px;border:2px solid rgba(255,255,255,.95);border-radius:32px;background:linear-gradient(135deg,rgba(255,255,255,.64),rgba(255,247,255,.82));box-shadow:0 16px 40px rgba(83,44,105,.11)}
+.young-leaders-heading{text-align:center;max-width:700px;margin:0 auto 26px}
+.young-leaders-heading h2{margin:9px 0 8px;font-size:clamp(29px,3.4vw,40px)}
+.young-leaders-heading p{margin:0;color:#74547e;font-weight:650;line-height:1.65;font-size:14px}
+.young-leaders-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:760px;margin:0 auto}
+.leader-card{overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:16px;padding:13px;border:2px solid #fff;border-radius:25px;background:linear-gradient(140deg,#fff9fd,#fff);box-shadow:0 10px 25px rgba(83,44,105,.1);transition:transform .25s,box-shadow .25s}
+.leader-card:hover{transform:translateY(-5px);box-shadow:0 17px 32px rgba(83,44,105,.15)}
+.leader-photo-placeholder{position:relative;min-width:0;aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;overflow:hidden;border:2px dashed #e8a9cf;border-radius:19px;background:radial-gradient(circle at 50% 28%,#fff 0 22%,transparent 23%),linear-gradient(145deg,#ffe4f1,#e5ddff 60%,#d9f5ee)}
+.leader-photo-zahari{background:radial-gradient(circle at 50% 28%,#fff 0 22%,transparent 23%),linear-gradient(145deg,#fff0d6,#dff3ff 60%,#e8ddff);border-color:#b6c9ed}
+.leader-photo-frame{position:relative;width:118px;height:118px;max-width:74%;border:5px solid #fff;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ff9fca,#9e80e8);box-shadow:0 8px 20px rgba(86,45,114,.18),inset 0 0 0 2px rgba(255,255,255,.45)}
+.leader-photo-zahari .leader-photo-frame{background:linear-gradient(145deg,#ffc66e,#6ebfe1)}
+.leader-initial{font-size:65px;line-height:1;font-weight:1000;color:#fff;text-shadow:0 3px 8px rgba(63,33,86,.18)}
+.leader-camera{position:absolute;right:-5px;bottom:2px;width:32px;height:32px;display:grid;place-items:center;border:3px solid #fff;border-radius:50%;background:#673a9a;color:#fff;font-size:22px;font-weight:800}
+.leader-photo-note{max-width:92%;padding:6px 10px;border-radius:99px;background:rgba(255,255,255,.84);color:#795285;font-size:10px;font-weight:900;text-align:center}
+.leader-info{min-width:0;padding:7px 5px 7px 0}
+.leader-role{display:inline-flex;align-items:center;padding:6px 12px;border-radius:99px;background:#ffdfef;color:#a72d76;font-size:10px;font-weight:1000;letter-spacing:.12em;text-transform:uppercase}
+.founder-role{background:#e6e0ff;color:#5c409e}
+.leader-info h3{margin:11px 0 7px;color:#51205f;font-size:27px;line-height:1.05;font-weight:1000}
+.leader-info p{margin:0;color:#765e80;font-size:12px;line-height:1.55;font-weight:650}
+@media(max-width:760px){.young-leaders{margin-top:38px;padding:28px 16px 20px;border-radius:25px}.young-leaders-grid{max-width:520px;gap:13px}.leader-card{grid-template-columns:1fr;gap:10px;padding:9px;border-radius:19px}.leader-photo-placeholder{aspect-ratio:1/1;border-radius:14px}.leader-photo-frame{width:94px;height:94px}.leader-initial{font-size:52px}.leader-camera{width:27px;height:27px;font-size:19px}.leader-info{text-align:center;padding:3px 3px 8px}.leader-info h3{font-size:22px;margin:8px 0 5px}.leader-info p{font-size:11px}.leader-role{font-size:9px;padding:5px 10px}}
+@media(max-width:420px){.young-leaders-grid{grid-template-columns:1fr;max-width:300px}.leader-card{grid-template-columns:112px 1fr;align-items:center}.leader-photo-placeholder{aspect-ratio:4/5}.leader-photo-frame{width:78px;height:78px}.leader-initial{font-size:45px}.leader-info{text-align:left;padding:7px 3px 7px 0}.leader-info h3{font-size:21px}.leader-info p{font-size:11px}}
+
 </style>
 </head>
 <body>
@@ -271,7 +295,50 @@ footer{padding:25px 0 35px;border-top:1px solid #f0d9ed;background:#fff8ff}.foot
 
 <section id="shop"><div class="wrap"><div class="section-head reveal"><div class="kicker">✿ The little shop ✿</div><h2>Pick your new bestie!</h2><p>Hover over a treasure to flip its card, then choose View Closer for all the details.</p></div>
 <div class="filters reveal" id="filters" role="group" aria-label="Filter products"><button class="filter active" data-filter="all">✨ All the goodies</button><button class="filter" data-filter="Toys">🧸 Toys</button><button class="filter" data-filter="Accessories">🎀 Accessories</button><button class="filter" data-filter="Decor">🌸 Décor</button></div><div class="products" id="productsGrid" aria-live="polite"></div></div></section>
-<section class="about" id="about"><div class="wrap about-grid"><div class="about-art reveal"><span class="about-mascot">🧸</span><span class="sticker">Stitched with a smile ♡</span></div><div class="about-copy reveal"><div class="kicker">A little hello from us</div><h2>Made by hand.<br>Made to make you smile.</h2><p>Every handmade creation is made with patience, imagination and lots of love. No two pieces are exactly alike — and that's their special magic.</p><div class="values"><div class="value">💗 Thoughtfully handmade</div><div class="value">🧵 Every stitch matters</div><div class="value">🎨 Colourful & unique</div><div class="value">🎁 Lovely little gifts</div></div></div></div></section>
+<section class="about" id="about">
+ <div class="wrap">
+  <div class="about-grid">
+   <div class="about-art reveal"><span class="about-mascot">🧸</span><span class="sticker">Stitched with a smile ♡</span></div>
+   <div class="about-copy reveal">
+    <div class="kicker">A little hello from us</div>
+    <h2>Made by hand.<br>Made to make you smile.</h2>
+    <p>Every handmade creation is made with patience, imagination and lots of love. No two pieces are exactly alike — and that's their special magic.</p>
+    <div class="values"><div class="value">💗 Thoughtfully handmade</div><div class="value">🧵 Every stitch matters</div><div class="value">🎨 Colourful & unique</div><div class="value">🎁 Lovely little gifts</div></div>
+   </div>
+  </div>
+  <div class="young-leaders reveal">
+   <div class="young-leaders-heading">
+    <div class="kicker">The young minds behind our little world</div>
+    <h2>Meet Our Little Leaders ✨</h2>
+    <p>Loopsy Land is brought to life by Ayrah and Zahari, whose imagination and creativity inspire our colourful world of crochet friends, playful stories and handmade magic.</p>
+   </div>
+   <div class="young-leaders-grid">
+    <article class="leader-card">
+     <div class="leader-photo-placeholder" role="img" aria-label="Photo placeholder for Ayrah">
+      <div class="leader-photo-frame"><span class="leader-initial">A</span><span class="leader-camera" aria-hidden="true">＋</span></div>
+      <span class="leader-photo-note">Ayrah's photo goes here</span>
+     </div>
+     <div class="leader-info">
+      <span class="leader-role">CEO</span>
+      <h3>Ayrah</h3>
+      <p>Helping guide Loopsy Land's ideas and bring our little creative world together.</p>
+     </div>
+    </article>
+    <article class="leader-card">
+     <div class="leader-photo-placeholder leader-photo-zahari" role="img" aria-label="Photo placeholder for Zahari">
+      <div class="leader-photo-frame"><span class="leader-initial">Z</span><span class="leader-camera" aria-hidden="true">＋</span></div>
+      <span class="leader-photo-note">Zahari's photo goes here</span>
+     </div>
+     <div class="leader-info">
+      <span class="leader-role founder-role">Founder</span>
+      <h3>Zahari</h3>
+      <p>The founder behind Loopsy Land, dreaming up a colourful place for crochet friends and stories.</p>
+     </div>
+    </article>
+   </div>
+  </div>
+ </div>
+</section>
 <section id="how"><div class="wrap"><div class="section-head reveal"><div class="kicker">Easy peasy</div><h2>How to bring one home</h2><p>Your new handmade friend is just three little steps away.</p></div><div class="steps"><div class="step reveal"><div class="step-icon">👀</div><h3>1. Find your favourite</h3><p>Browse the collection and choose the little treasure you love.</p></div><div class="step reveal"><div class="step-icon">💬</div><h3>2. Say hello</h3><p>Message us on WhatsApp to check colours, price and availability.</p></div><div class="step reveal"><div class="step-icon">🎁</div><h3>3. Make it yours</h3><p>We'll confirm your order and help arrange delivery.</p></div></div></div></section>
 <section id="contact"><div class="wrap"><div class="cta-box reveal"><h2>Ready for a little magic?</h2><p>Have a question, a custom idea or just want to say hello? We'd love to hear from you!</p><a class="btn whatsapp-link" href="#">Let's make something lovely 💖</a></div></div></section>
 <section class="social-follow" id="follow"><div class="wrap">
